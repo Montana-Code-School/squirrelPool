@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default class App extends React.Component {
   render() {
@@ -8,6 +8,13 @@ export default class App extends React.Component {
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
+        <Button
+          onPress= {() => (
+            console.log("button clicked")
+          )}
+          title="Butt"
+          color="#841584"
+          accessibilityLabel="Fuck you" />
       </View>
     );
   }
