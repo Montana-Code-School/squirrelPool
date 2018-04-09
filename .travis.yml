@@ -1,4 +1,15 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "lts/*"
+  - node
+
+env:
+  - CI = false
+
+install:
+  - npm install
+
+script:
+  - npm run test:deploy
+
+after_script:
+  - echo "BUILD FINISHED"

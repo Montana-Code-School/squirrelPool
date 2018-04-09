@@ -12,6 +12,7 @@ configure({
 describe('these are our tests. there are many like them, but these ones are ours.', () => {
   it('renders without crashing', () => {
   const rendered = renderer.create(<App />).toJSON();
+  console.log(rendered, "<<<<<<<<<<<<<<<")
   expect(rendered).toBeTruthy();
   });
 })
