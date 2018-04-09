@@ -1,22 +1,12 @@
 import React from 'react';
-import { Button, Alert, Image, StyleSheet, Text, View, AppRegistry } from 'react-native';
-import landingPage from './Component/Landingpage.js';
+import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import LandingPage from './Component/Landingpage.js';
+import PropTypes from 'prop-types'
 
 export default class App extends React.Component {
   render() {
-    <landingPage />;
+    return (
+      <LandingPage />
+    );
   }
-};
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#a8ecff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     color: '#fff'
-//   },
-//   text: {
-//     color: '#aa8800',
-//   }
-// });
+}

@@ -1,17 +1,49 @@
 import React from 'react';
-import { Button, Alert, Image, StyleSheet, Text, View } from 'react-native';
-import { AppRegistry } from 'react-native'
+import PropTypes from 'prop-types';
+import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 
 
-export default Class landingPage extends React.Component {
-  Constructor(props) {
-    super(props);
+export default class LandingPage extends React.Component {
+  render() {
+    return(
+      <NavigatorIOS style = {landingPageStyle.wrapper}
+        initialRoute={{
+          component: FirstPage,
+          title: 'Title',
+          passProps: {index: 1},
+        }}
+      />
+    );
   }
+}
+
+class FirstPage extends React.Component {
+  static propTypes = {
+    route: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    }),
+    navigator: PropTypes.object.isRequired,
+  };
+
+constructor(props, context) {
+  super(props, context);
+    this._onForward = this._onForward.bind(this);
+}
+
+_onForward() {
+  let nextIndex = ++this.props.index;
+  this.props.navigator.push({
+    component: FirstPage,
+    title: 'Landing Page ' + nextIndex,
+    passProps: {index: nextIndex},
+  })
+}
 
   render () {
     return (
       <View style={landingPageStyle.container}>
-        <Text style={landingPageStyle.superTitle}>TEXT FROM LANDINGPirateE</Text>
+        <Text>TEXT FROM LANDINGPirateE</Text>
+        <Text>Second Text!</Text>
       </View>
     );
   }
@@ -27,7 +59,7 @@ const landingPageStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   startButton: {
-    backgroundColor: 'FFFF00',
+    backgroundColor: '#ff00ff',
   },
   superTitle: {
     color: '#000'
@@ -35,5 +67,9 @@ const landingPageStyle = StyleSheet.create({
   landingTitle: {
   },
   landingImage: {
+  },
+  wrapper: {
+    flex: 1,
+    backgroundColor: '#a8ecff'
   },
 });
