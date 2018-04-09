@@ -3,20 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 
 
-// export default class LandingPage extends React.Component {
-//   render() {
-//     return(
-//       <NavigatorIOS style = {landingPageStyle.wrapper}
-//         initialRoute={{
-//           component: FirstPage,
-//           title: 'Nuts N Boats',
-//           passProps: {index: 1},
-//         }}
-//       />
-//     );
-//   }
-// }
-
 export default class LandingPage extends React.Component {
   static propTypes = {
     route: PropTypes.shape({

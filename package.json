@@ -18,6 +18,7 @@
     "test": "jest --watchAll"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "preset": "jest-expo"
   },
   "dependencies": {
