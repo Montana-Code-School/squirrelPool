@@ -5,7 +5,6 @@
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest-enzyme": "^6.0.0",
     "jest-expo": "26.0.0",
     "react-native-scripts": "1.13.1",
     "react-test-renderer": "16.3.0-alpha.1"
@@ -16,7 +15,7 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
@@ -25,8 +24,10 @@
   "dependencies": {
     "expo": "^26.0.0",
     "phaser": "^3.3.0",
+    "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-dom": "^16.3.1",
-    "react-native": "0.54.0"
+    "react-native": "0.54.0",
+    "react-navigation": "^1.5.11"
   }
 }

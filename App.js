@@ -1,30 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import LandingPage from './Component/Landingpage.js';
+import PropTypes from 'prop-types'
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-        <Button
-          onPress= {() => (
-            console.log("button clicked")
-          )}
-          title="Butt"
-          color="#841584"
-          accessibilityLabel="Fuck you" />
-      </View>
+      <NavigatorIOS style = {styleAppPage.wrapper}
+        initialRoute={{
+          component: LandingPage,
+          title: 'Nuts N Boats',
+          passProps: {index: 1},
+        }}
+      />
+      //<LandingPage />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styleAppPage = StyleSheet.create({
+  wrapper:{
+    flex: 1
+  }
+})
