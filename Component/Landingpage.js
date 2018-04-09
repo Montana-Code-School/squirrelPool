@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 
 
-export default class LandingPage extends React.Component {
-  render() {
-    return(
-      <NavigatorIOS style = {landingPageStyle.wrapper}
-        initialRoute={{
-          component: FirstPage,
-          title: 'Title',
-          passProps: {index: 1},
-        }}
-      />
-    );
-  }
-}
+// export default class LandingPage extends React.Component {
+//   render() {
+//     return(
+//       <NavigatorIOS style = {landingPageStyle.wrapper}
+//         initialRoute={{
+//           component: FirstPage,
+//           title: 'Nuts N Boats',
+//           passProps: {index: 1},
+//         }}
+//       />
+//     );
+//   }
+// }
 
-class FirstPage extends React.Component {
+export default class LandingPage extends React.Component {
   static propTypes = {
     route: PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -44,6 +44,12 @@ _onForward() {
       <View style={landingPageStyle.container}>
         <Text>TEXT FROM LANDINGPirateE</Text>
         <Text>Second Text!</Text>
+        <Button
+          style={landingPageStyle.startButton}
+          onPress={this._onForward}
+          title="START"
+        />
+
       </View>
     );
   }
@@ -67,9 +73,5 @@ const landingPageStyle = StyleSheet.create({
   landingTitle: {
   },
   landingImage: {
-  },
-  wrapper: {
-    flex: 1,
-    backgroundColor: '#a8ecff'
   },
 });

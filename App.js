@@ -6,7 +6,20 @@ import PropTypes from 'prop-types'
 export default class App extends React.Component {
   render() {
     return (
-      <LandingPage />
+      <NavigatorIOS style = {styleAppPage.wrapper}
+        initialRoute={{
+          component: LandingPage,
+          title: 'Nuts N Boats',
+          passProps: {index: 1},
+        }}
+      />
+      //<LandingPage />
     );
   }
 }
+
+const styleAppPage = StyleSheet.create({
+  wrapper:{
+    flex: 1
+  }
+})
