@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import LandingPage from './Component/Landingpage.js';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import GamePage from './Component/Gamepage.js'
 
 export default class App extends React.Component {
   render() {
@@ -11,6 +12,11 @@ export default class App extends React.Component {
           component: LandingPage,
           title: 'Nuts N Boats',
           passProps: {index: 1},
+        }}
+        Route = {{
+          component: GamePage,
+          title: 'Game Page',
+          passProps: {index: 2},
         }}
       />
       //<LandingPage />

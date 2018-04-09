@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import GamePage from './Gamepage.js'
 
 
 export default class LandingPage extends React.Component {
@@ -19,8 +20,8 @@ constructor(props, context) {
 _onForward() {
   let nextIndex = ++this.props.index;
   this.props.navigator.push({
-    component: FirstPage,
-    title: 'Landing Page ' + nextIndex,
+    component: GamePage,
+    title: 'Landing Page ',
     passProps: {index: nextIndex},
   })
 }
