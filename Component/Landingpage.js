@@ -50,8 +50,6 @@ _handleNextPress(nextRoute) {
   }
 }
 
-//react-navigation please install
-
 const landingPageStyle = StyleSheet.create({
   container: {
     backgroundColor: '#a8ecff',
