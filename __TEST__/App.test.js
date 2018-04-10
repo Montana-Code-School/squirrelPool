@@ -1,7 +1,6 @@
 import React from 'react';
-import App from './App';
-import LandingPage from './Component/Landingpage.js'
-import GamePage from './Component/Gamepage.js'
+import App from '.././App';
+import LandingPage from '.././Component/Landingpage.js'
 import Enzyme, { shallow, mount, configure } from 'enzyme';
 import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import Adapter from 'enzyme-adapter-react-16';
@@ -28,18 +27,17 @@ describe('these are our tests. there are many like them, but these ones are ours
 //  console.log("vvvvvv rendered.children vvvvv");
 //  console.log(rendered.children);
 //  console.log("RENDERED.CHILDREN CONTENTS");
-//  console.log("vvvvvv rendered.children[0].type vvvvv");
-//  console.log(rendered.children[0].type);
+// console.log(rendered.children[0].type);
 //  console.log("vvvvv rendered children[0].props vvvvvv");
 //  console.log(rendered.children[0].props);
 //  console.log("vvvvv rendered.children[0].children vvvvvvvv");
-//  console.log(rendered.children[0].children);
-//  console.log("vvvvv rendered.children[0].children[0] vvvvvvvv");
-//  console.log(rendered.children[0].children[0]);
-//  console.log("vvvvv rendered.children[0].children[0].children vvvvvvvv");
-//  console.log(rendered.children[0].children[0].children[0]);
-// console.log(rendered.children[0].children[0].children[0].children);
-console.log(rendered.children[0].children[0].children[0].children[2]);
+// console.log(rendered.children[0].children);
+// console.log("vvvvv rendered.children[0].children[0] vvvvvvvv");
+// console.log(rendered.children[0].children[0]);
+// console.log("vvvvv rendered.children[0].children[0].children vvvvvvvv");
+// console.log(rendered.children[0].children[0].children[0]);
+ console.log(rendered.children[0].children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children[0].children[2]);
 // console.log(rendered.children[0].children[0].children[0].children[2].children);
 // console.log(rendered.children[0].children[0].children[0].children[2].children[0]);
 // console.log(rendered.children[0].children[0].children[0].children[2].children[0].children);
@@ -59,6 +57,30 @@ console.log(rendered.children[0].children[0].children[0].children[2]);
       .title
     )
     .toBe('Nuts N Boats')
+  })
+
+  it('has four elements; text(landingpirate), image, text(secondtext), touchablehighlight', () => {
+    expect(
+      rendered
+      .children[0]
+      .children[0]
+      .children[0]
+      .children
+      .length
+    )
+    .toBe(4)
+  })
+
+  it('child [0] is text(landingpirate)', () => {
+    expect(
+      rendered
+      .children[0]
+      .children[0]
+      .children[0]
+      .children[0]
+      .children[0]
+    )
+    .toBe('TEXT FROM LANDINGPirateE')
   })
 
   describe('Button/touchable tests', () => {
@@ -81,7 +103,7 @@ console.log(rendered.children[0].children[0].children[0].children[2]);
         .children[0]
         .children[0]
         .children[0]
-        .children[2]
+        .children[3]
         .props
         .style
         .backgroundColor
