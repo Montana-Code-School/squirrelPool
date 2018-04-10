@@ -15,14 +15,14 @@ export default class GamePage extends React.Component {
     this._onForward = this._onForward.bind(this);
   }
 
-  _onForward() {
-  let nextIndex = ++this.props.index;
-  this.props.navigator.push({
-    component: GamePage,
-    title: 'Game Page ',
-    passProps: {index: nextIndex},
-  })
-  }
+  // _onForward() {
+  // let nextIndex = ++this.props.index;
+  // this.props.navigator.push({
+  //   component: GamePage,
+  //   title: 'Game Page ',
+  //   passProps: {index: nextIndex},
+  // })
+  // }
   render() {
     return(
       <View>

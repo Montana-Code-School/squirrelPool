@@ -1,5 +1,6 @@
 Nuts and Boats, a React Native based squirrel pirate game.
 Created on April 4th, 2018.
+We are using NavigatorIOS for app navigation. For more info/official docs, visit: `https://facebook.github.io/react-native/docs/navigatorios.html`.
 Instructions to start:
  - after forking from github into your own repository
  - in the terminal, type `npm init` or `yarn init` and press enter.

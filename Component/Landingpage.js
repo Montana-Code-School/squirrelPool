@@ -26,17 +26,25 @@ _onForward() {
   })
 }
 
+_handleNextPress(nextRoute) {
+  this.props.navigator.push(nextRoute);
+}
+
   render () {
+    const nextRoute = {
+      component: GamePage,
+      title: "Game Page",
+      passProps: {index: 2}
+    }
     return (
       <View style={landingPageStyle.container}>
         <Text>TEXT FROM LANDINGPirateE</Text>
         <Text>Second Text!</Text>
         <Button
           style={landingPageStyle.startButton}
-          onPress={this._onForward}
+          onPress={() => this._handleNextPress(nextRoute)}
           title="START"
         />
-
       </View>
     );
   }

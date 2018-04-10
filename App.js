@@ -16,7 +16,7 @@ export default class App extends React.Component {
         Route = {{
           component: GamePage,
           title: 'Game Page',
-          passProps: {index: 2},
+          passProps: {index: 2}
         }}
       />
       //<LandingPage />
