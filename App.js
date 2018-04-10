@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import LandingPage from './Component/Landingpage.js';
 import PropTypes from 'prop-types';
 import GamePage from './Component/Gamepage.js'
