@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 
 export default class GamePage extends React.Component {
   static propTypes = {

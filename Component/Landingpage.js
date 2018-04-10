@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import GamePage from './Gamepage.js'
 
 
@@ -38,13 +38,17 @@ _handleNextPress(nextRoute) {
     }
     return (
       <View style={landingPageStyle.container}>
-        <Text>TEXT FROM LANDINGPirateE</Text>
-        <Text>Second Text!</Text>
-        <Button
+        <Text style={landingPageStyle.superTitle}>TEXT FROM LANDINGPirateE</Text>
+        <Image source={require('./Images/ShipRight.png')}
+          resizeMode= 'contain'
+          style={landingPageStyle.landingImage}
+         />
+        <Text style={landingPageStyle.landingTitle}>Second Text!</Text>
+        <TouchableHighlight
           style={landingPageStyle.startButton}
-          onPress={() => this._handleNextPress(nextRoute)}
-          title="START"
-        />
+          onPress={() => this._handleNextPress(nextRoute)}>
+            <Text>START</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -55,16 +59,25 @@ const landingPageStyle = StyleSheet.create({
     backgroundColor: '#a8ecff',
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   startButton: {
+    flex: 0,
     backgroundColor: '#ff00ff',
+    marginBottom: 100,
   },
   superTitle: {
-    color: '#000'
+    flex: 1,
+    color: '#000',
+    marginTop: 100,
   },
   landingTitle: {
+    flex: 2,
   },
   landingImage: {
+    flex: 3,
+    width: 400,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });

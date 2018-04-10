@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1523382819851" clover="3.2.0">
-  <project timestamp="1523382819851" name="All files">
-    <metrics statements="14" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3" elements="22" coveredelements="10" complexity="0" loc="14" ncloc="14" packages="2" files="3" classes="3">
+<coverage generated="1523399927781" clover="3.2.0">
+  <project timestamp="1523399927781" name="All files">
+    <metrics statements="15" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3" elements="23" coveredelements="11" complexity="0" loc="15" ncloc="15" packages="3" files="4" classes="4">
       <package name="squirrelPool">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="App.js" path="/Users/elidery/code/squirrelPool/App.js">
@@ -27,8 +27,15 @@
           <line num="30" count="0" type="stmt"/>
           <line num="34" count="1" type="stmt"/>
           <line num="39" count="1" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="53" count="1" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="57" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="squirrelPool.Component.Images">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="ShipRight.png" path="/Users/elidery/code/squirrelPool/Component/Images/ShipRight.png">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
         </file>
       </package>
     </metrics>
