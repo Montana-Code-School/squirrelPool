@@ -10,7 +10,6 @@ import reactDOM from 'react-dom';
 import sinon from 'sinon';
 
 Enzyme.configure({ adapter: new Adapter() })
-
 // const onTestPress = sinon.spy();
 // const onNavigate = sinon.spy();
 // const landShallow = shallow(<LandingPage navigator={{push:onNavigate}} onPress={onTestPress } />);
@@ -18,51 +17,41 @@ Enzyme.configure({ adapter: new Adapter() })
 const rendered = renderer.create(<App />).toJSON();
 
 describe('these are our tests. there are many like them, but these ones are ours.', () => {
-//  console.log("FULL FILE CONTENTS");
-//  console.log("vvvvv rendered vvvvv");
-//  console.log(rendered);
-//  console.log("vvv Rendered type vvvv");
-//  console.log(rendered.type);
-//  console.log("vvvvv rendered props vvvv");
-//  console.log(rendered.props);
-//  console.log("vvvvvv rendered.children vvvvv");
-//  console.log(rendered.children);
-//  console.log("RENDERED.CHILDREN CONTENTS");
+// console.log("FULL FILE CONTENTS");
+// console.log("vvvvv rendered vvvvv");
+// console.log(rendered);
+// console.log("vvv Rendered type vvvv");
+// console.log(rendered.type);
+// console.log("vvvvv rendered props vvvv");
+// console.log(rendered.props);
+// console.log("vvvvvv rendered.children vvvvv");
+// console.log(rendered.children);
+// console.log("RENDERED.CHILDREN CONTENTS");
 // console.log(rendered.children[0].type);
-//  console.log("vvvvv rendered children[0].props vvvvvv");
-//  console.log(rendered.children[0].props);
-//  console.log("vvvvv rendered.children[0].children vvvvvvvv");
+// console.log("vvvvv rendered children[0].props vvvvvv");
+// console.log(rendered.children[0].props);
+// console.log("vvvvv rendered.children[0].children vvvvvvvv");
 // console.log(rendered.children[0].children);
 // console.log("vvvvv rendered.children[0].children[0] vvvvvvvv");
 // console.log(rendered.children[0].children[0]);
 // console.log("vvvvv rendered.children[0].children[0].children vvvvvvvv");
-// console.log(rendered.children[0].children[0].children[0]);
- console.log(rendered.children[0].children[0].children[0].children);
-// console.log(rendered.children[0].children[0].children[0].children[2]);
-// console.log(rendered.children[0].children[0].children[0].children[2].children);
-// console.log(rendered.children[0].children[0].children[0].children[2].children[0]);
-// console.log(rendered.children[0].children[0].children[0].children[2].children[0].children);
-// console.log(rendered.children[0].children[0].children[0].children[2].children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children[0].children[0]);
+// console.log(rendered.children[0].children[0].children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children[0].children[0].children[0]);
+// console.log(rendered.children[0].children[0].children[0].children[0].children[0].children);
+// console.log(rendered.children[0].children[0].children[0].children[0].children[0].children[0].children);
 
   it('renders without crashing', () => {
   expect(rendered).toBeTruthy();
   });
 
-  it('has a title', () => {
-    expect(
-      rendered
-      .children[0]
-      .children[0]
-      .props
-      .initialRoute
-      .title
-    )
-    .toBe('Nuts N Boats')
-  })
-
   it('has four elements; text(landingpirate), image, text(secondtext), touchablehighlight', () => {
     expect(
       rendered
+      .children[0]
+      .children[0]
       .children[0]
       .children[0]
       .children[0]
@@ -80,48 +69,10 @@ describe('these are our tests. there are many like them, but these ones are ours
       .children[0]
       .children[0]
       .children[0]
+      .children[0]
+      .children[0]
     )
-    .toBe('TEXT FROM LANDINGPirateE')
+    .toBe('TEXT FROM LANDING Pirate')
   })
 
-  describe('Button/touchable tests', () => {
-    it('contains an accessible TouchableHighlight', () => {
-      expect(
-        rendered
-        .children[0]
-        .children[0]
-        .children[0]
-        .children[2]
-        .props
-        .accessible
-      )
-      .toBe(true)
-    });
-
-    it('contains a backgroundColor', () => {
-      expect(
-        rendered
-        .children[0]
-        .children[0]
-        .children[0]
-        .children[3]
-        .props
-        .style
-        .backgroundColor
-      )
-      .toBe('#ff00ff')
-    });
-    // xit('gets pushed in shallow', () => {
-    //   const onTestPress = sinon.spy();
-    //   const onNavigate = sinon.spy();
-    //   const landShallow = shallow(
-    //     <TouchableHighlight
-    //       onPress = {onTestPress}
-    //       title = "START"
-    //     />);
-    //   landShallow.simulate('press');
-    //   console.log(onTestPress.callCount);
-    //   expect(onTestPress.callCount).toBeTruthy();
-    // });
   })
-})
