@@ -1,31 +1,36 @@
 import React from 'react';
-import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
-import LandingPage from './Component/Landingpage.js';
+import { TouchableHighlight, Alert, Image, StyleSheet, Text, View } from 'react-native';
+import LandingPage from './Component/LandingPage.js';
 import PropTypes from 'prop-types';
-import GamePage from './Component/Gamepage.js'
+import GamePage from './Component/GamePage.js';
+import { StackNavigator } from 'react-navigation';
+
+const RootStack =
+  StackNavigator({
+    LandingPage: {
+      screen: LandingPage,
+      name: 'Landing Page',
+    },
+    GamePage: {
+      screen: GamePage,
+      name: 'Game Page',
+    },
+  },
+  {initialRouteName: 'LandingPage'}
+)
 
 export default class App extends React.Component {
   render() {
     return (
-      <NavigatorIOS style = {styleAppPage.wrapper}
-        initialRoute={{
-          component: LandingPage,
-          title: 'Nuts N Boats',
-          passProps: {index: 1},
-        }}
-        Route = {{
-          component: GamePage,
-          title: 'Game Page',
-          passProps: {index: 2}
-        }}
-      />
-      //<LandingPage />
+      <View style={ styleAppPage.container } >
+        <RootStack />
+      </View>
     );
   }
 }
 
 const styleAppPage = StyleSheet.create({
-  wrapper:{
+  container:{
     flex: 1
   }
-})
+});
