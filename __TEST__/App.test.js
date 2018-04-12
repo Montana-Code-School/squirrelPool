@@ -1,7 +1,7 @@
 import React from 'react';
-import App from '.././App';
-import LandingPage from '.././Component/Landingpage.js'
-import GamePage from '.././Component/Gamepage.js'
+import App from '../App';
+import LandingPage from '../Component/Landingpage.js'
+import GamePage from '../Component/Gamepage.js'
 import Enzyme, { shallow, mount, configure } from 'enzyme';
 import { TouchableHighlight, Alert, Image, StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import Adapter from 'enzyme-adapter-react-16';

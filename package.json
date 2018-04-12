@@ -19,7 +19,10 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "!node_modules/react-game-kit/native"
+    ]
   },
   "dependencies": {
     "expo": "^26.0.0",

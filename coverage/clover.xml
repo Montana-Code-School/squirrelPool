@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1523483834284" clover="3.2.0">
-  <project timestamp="1523483834284" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0">
+<coverage generated="1523561429135" clover="3.2.0">
+  <project timestamp="1523561429136" name="All files">
+    <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3" elements="18" coveredelements="10" complexity="0" loc="11" ncloc="11" packages="4" files="5" classes="5">
+      <package name="squirrelPool">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="App.js" path="/Users/BladeRunner/code/squirrelPool/App.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="squirrelPool.Component">
+        <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <file name="GamePage.js" path="/Users/BladeRunner/code/squirrelPool/Component/GamePage.js">
+          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+        </file>
+        <file name="LandingPage.js" path="/Users/BladeRunner/code/squirrelPool/Component/LandingPage.js">
+          <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="39" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="squirrelPool.Component.Images">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="ShipRight.png" path="/Users/BladeRunner/code/squirrelPool/Component/Images/ShipRight.png">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="squirrelPool.Helpers">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="AppyHelperton.js" path="/Users/BladeRunner/code/squirrelPool/Helpers/AppyHelperton.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
     </metrics>
   </project>
 </coverage>
