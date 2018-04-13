@@ -16,7 +16,9 @@ const RootStack =
       name: 'Game Page',
     },
   },
-  {initialRouteName: 'LandingPage'}
+  {initialRouteName: 'LandingPage',
+   headerMode: 'none'
+  }
 )
 
 export default class App extends React.Component {

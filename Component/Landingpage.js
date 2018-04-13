@@ -21,7 +21,7 @@ gamePageNav(e){
     return (
       <View style={landingPageStyle.container}>
         <Text style={landingPageStyle.superTitle}>TEXT FROM LANDING Pirate</Text>
-        <Image source={require('./Images/ShipRight.png')}
+        <Image source={require('./Assets/Images/ShipRight.png')}
           resizeMode= 'contain'
           style={landingPageStyle.landingImage}
          />

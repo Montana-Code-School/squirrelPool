@@ -1,5 +1,5 @@
 import React from 'react';
-import { TileMap, Loop } from 'react-game-kit/native';
+import { TileMap, Loop, Sprite } from 'react-game-kit/native';
 
 export default class WaterTileMap extends React.Component {
 
@@ -8,7 +8,7 @@ export default class WaterTileMap extends React.Component {
     <Loop>
       <TileMap
         style = {{}}
-        src = {require('../Images/NNBWATERSQUARE2.png')}
+        src = {require('../Assets/Images/Tiles/NNBWATERSQUARE2.png')}
         sourceWidth = {100}
         tileSize = {32}
         columns = {18}
@@ -21,14 +21,14 @@ export default class WaterTileMap extends React.Component {
       />
       <TileMap
         style = {{}}
-        src = {require('../Images/NNBLANDSQUARE3.png')}
+        src = {require('../Assets/Images/Tiles/NNBLANDSQUARE3.png')}
         sourceWidth = {100}
         tileSize = {96}
         columns = {6}
         rows = {10}
         layers = {[
           [
-            1,0,0,0,0,0,
+            0,0,0,0,0,0,
             0,0,0,0,0,0,
             0,0,0,0,1,0,
             0,0,0,0,0,0,
@@ -43,7 +43,7 @@ export default class WaterTileMap extends React.Component {
       />
       <TileMap
         style = {{}}
-        src = {require('../Images/NNBWATERSQUARE3.png')}
+        src = {require('../Assets/Images/Tiles/NNBWATERSQUARE3.png')}
         sourceWidth = {100}
         tileSize = {96}
         columns = {6}
