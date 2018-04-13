@@ -1,5 +1,5 @@
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/App.js
+SF:/Users/elidery/code/squirrelPool/App.js
 FN:23,(anonymous_0)
 FNF:1
 FNH:1
@@ -13,7 +13,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/GamePage.js
+SF:/Users/elidery/code/squirrelPool/Component/Gamepage.js
 FN:9,(anonymous_0)
 FN:13,(anonymous_1)
 FNF:2
@@ -28,7 +28,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/LandingPage.js
+SF:/Users/elidery/code/squirrelPool/Component/LandingPage.js
 FN:11,(anonymous_0)
 FN:15,(anonymous_1)
 FN:20,(anonymous_2)
@@ -50,7 +50,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/GameAssets/WaterTileMap.js
+SF:/Users/elidery/code/squirrelPool/Component/GameAssets/WaterTileMap.js
 FN:6,(anonymous_0)
 FNF:1
 FNH:1
@@ -62,7 +62,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/Images/NNBLANDSQUARE1.png
+SF:/Users/elidery/code/squirrelPool/Component/Images/NNBLANDSQUARE2.png
 FNF:0
 FNH:0
 DA:1,1
@@ -72,7 +72,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/Images/NNBWATERSQUARE2.png
+SF:/Users/elidery/code/squirrelPool/Component/Images/NNBWATERSQUARE2.png
 FNF:0
 FNH:0
 DA:1,1
@@ -82,21 +82,12 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/BladeRunner/code/squirrelPool/Component/Images/ShipRight.png
+SF:/Users/elidery/code/squirrelPool/Component/Images/ShipRight.png
 FNF:0
 FNH:0
 DA:1,1
 LF:1
 LH:1
-BRF:0
-BRH:0
-end_of_record
-TN:
-SF:/Users/BladeRunner/code/squirrelPool/Helpers/AppyHelperton.js
-FNF:0
-FNH:0
-LF:0
-LH:0
 BRF:0
 BRH:0
 end_of_record

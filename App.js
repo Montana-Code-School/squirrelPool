@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, Alert, Image, StyleSheet, Text, View } from 'react-native';
+import { YellowBox, TouchableHighlight, Alert, Image, StyleSheet, Text, View } from 'react-native';
 import LandingPage from './Component/LandingPage.js';
 import PropTypes from 'prop-types';
 import GamePage from './Component/GamePage.js';
@@ -34,3 +34,4 @@ const styleAppPage = StyleSheet.create({
     flex: 1
   }
 });
+console.disableYellowBox = true;

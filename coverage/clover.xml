@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1523573159145" clover="3.2.0">
-  <project timestamp="1523573159145" name="All files">
+<coverage generated="1523637938008" clover="3.2.0">
+  <project timestamp="1523637938008" name="All files">
     <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8" elements="22" coveredelements="22" complexity="0" loc="14" ncloc="14" packages="5" files="8" classes="8">
       <package name="squirrelPool">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="App.js" path="/Users/BladeRunner/code/squirrelPool/App.js">
+        <file name="App.js" path="/Users/elidery/code/squirrelPool/App.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="9" count="1" type="stmt"/>
           <line num="24" count="1" type="stmt"/>
@@ -13,12 +13,12 @@
       </package>
       <package name="squirrelPool.Component">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <file name="GamePage.js" path="/Users/BladeRunner/code/squirrelPool/Component/GamePage.js">
+        <file name="Gamepage.js" path="/Users/elidery/code/squirrelPool/Component/Gamepage.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
           <line num="10" count="1" type="stmt"/>
           <line num="14" count="1" type="stmt"/>
         </file>
-        <file name="LandingPage.js" path="/Users/BladeRunner/code/squirrelPool/Component/LandingPage.js">
+        <file name="LandingPage.js" path="/Users/elidery/code/squirrelPool/Component/LandingPage.js">
           <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
           <line num="12" count="3" type="stmt"/>
           <line num="16" count="1" type="stmt"/>
@@ -29,29 +29,29 @@
       </package>
       <package name="squirrelPool.Component.GameAssets">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <file name="WaterTileMap.js" path="/Users/BladeRunner/code/squirrelPool/Component/GameAssets/WaterTileMap.js">
+        <file name="WaterTileMap.js" path="/Users/elidery/code/squirrelPool/Component/GameAssets/WaterTileMap.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="7" count="1" type="stmt"/>
         </file>
       </package>
       <package name="squirrelPool.Component.Images">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <file name="NNBLANDSQUARE1.png" path="/Users/BladeRunner/code/squirrelPool/Component/Images/NNBLANDSQUARE1.png">
+        <file name="NNBLANDSQUARE2.png" path="/Users/elidery/code/squirrelPool/Component/Images/NNBLANDSQUARE2.png">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
         </file>
-        <file name="NNBWATERSQUARE2.png" path="/Users/BladeRunner/code/squirrelPool/Component/Images/NNBWATERSQUARE2.png">
+        <file name="NNBWATERSQUARE2.png" path="/Users/elidery/code/squirrelPool/Component/Images/NNBWATERSQUARE2.png">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
         </file>
-        <file name="ShipRight.png" path="/Users/BladeRunner/code/squirrelPool/Component/Images/ShipRight.png">
+        <file name="ShipRight.png" path="/Users/elidery/code/squirrelPool/Component/Images/ShipRight.png">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
         </file>
       </package>
       <package name="squirrelPool.Helpers">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <file name="AppyHelperton.js" path="/Users/BladeRunner/code/squirrelPool/Helpers/AppyHelperton.js">
+        <file name="AppyHelperton.js" path="/Users/elidery/code/squirrelPool/Helpers/AppyHelperton.js">
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
       </package>
