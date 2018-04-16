@@ -15,7 +15,8 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "jest --watchAll --coverage --verbose"
+    "test": "jest --watchAll --coverage --verbose",
+    "test:deploy": "jest"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",

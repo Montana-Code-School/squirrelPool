@@ -7,7 +7,7 @@ export default class ShipSprite extends React.Component {
     return (
       <Sprite
         repeat={false}
-        src={require('../Assets/Images/Sprites/shipdown.png')}
+        src={require('../Assets/Images/Sprites/ShipSquare.png')}
         scale={this.context.scale * 1}
         state={0}
         steps={[1]}
