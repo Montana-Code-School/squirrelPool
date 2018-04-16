@@ -16,7 +16,6 @@ gamePageNav(e){
   this.props.navigation.navigate('GamePage');
 }
 
-
   render () {
     return (
       <View style={landingPageStyle.container}>
