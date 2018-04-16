@@ -1,7 +1,7 @@
 import React from 'react';
 import App from '../App';
-import LandingPage from '../Component/Landingpage.js'
-import GamePage from '../Component/Gamepage.js'
+import LandingPage from '../Component/LandingPage.js'
+import GamePage from '../Component/GamePage.js'
 import Enzyme,
   {
     shallow,
