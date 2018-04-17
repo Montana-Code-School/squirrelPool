@@ -55,10 +55,10 @@ export default class ShipSprite extends Component {
         <Sprite
           style = {{top: upDown, left: leftRight}}
           repeat={false}
-          src={require('../Assets/Images/Sprites/RedShip1.png')}
+          src={require('../Assets/Images/Sprites/RedShipSolo1.png')}
           scale={this.context.scale * 1}
           state={0}
-          steps={[1]}
+          steps={[0]}
           tileHeight={200}
           tileWidth={200}
         />
