@@ -48,14 +48,14 @@ export default class ShipSprite extends Component {
   }
 
   render() {
-    const upDown = -100;
-    const leftRight = 60;
+    const upDown = this.props.upArrow;
+    const leftRight = this.props.leftArrow;
     return (
       <View>
         <Sprite
           style = {{top: upDown, left: leftRight}}
           repeat={false}
-          src={require('../Assets/Images/Sprites/RedShipSolo1.png')}
+          src={require('../Assets/Images/Sprites/BigBoatGB.png')}
           scale={this.context.scale * 1}
           state={0}
           steps={[0]}
