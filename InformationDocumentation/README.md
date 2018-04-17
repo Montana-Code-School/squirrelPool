@@ -10,3 +10,4 @@ Instructions to start:
     and `react-test-rendrer`.
  - and that you have the npm packages `expo`, `react-game-kit`, `react`, `react-dom`,
     `react-native`, and `react-navigation`.
+ - We decided to move away from using MobX with React-Game-Kit since we are using a   mounted Create-React-Native-App build.

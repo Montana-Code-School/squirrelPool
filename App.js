@@ -16,7 +16,7 @@ const RootStack =
       name: 'Game Page',
     },
   },
-  {initialRouteName: 'LandingPage',
+  {initialRouteName: 'GamePage',
    headerMode: 'none'
   }
 )

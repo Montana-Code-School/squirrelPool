@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableHighlight, Alert, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableHighlight, Image, StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import GamePage from './GamePage.js'
-import AppyHelperton from '../Helpers/AppyHelperton.js';
-
 
 export default class LandingPage extends React.Component {
 

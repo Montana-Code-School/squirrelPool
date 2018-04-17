@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
 import Matter from 'matter-js';
-import { Sprite, Body } from 'react-game-kit/native';
+import { Sprite, Body, Loop } from 'react-game-kit/native';
 import RedShip1 from '../Assets/Images/Sprites/RedShip1.png';
 
-@observer export default class ShipSprite extends Component {
+export default class ShipSprite extends Component {
   static propTypes = {
     keys: PropTypes.object,
     store: PropTypes.object,
@@ -23,6 +23,7 @@ import RedShip1 from '../Assets/Images/Sprites/RedShip1.png';
     this.state = {
       characterState: 0,
       loop: false,
+      characterPosition: {x: 0, y: 0}
     };
 
     this.handlePlayStateChanged = this.handlePlayStateChanged.bind(this);
@@ -31,45 +32,34 @@ import RedShip1 from '../Assets/Images/Sprites/RedShip1.png';
   }
 
   componentDidMount(){
-    Matter.Events.on(this.update, this.context.engine, "afterUpdate");
   }
 
   componentWillUnmount() {
-    Matter.Events.off(this.context.engine, this.update, "afterUpdate");
   }
 
   getWrapperStyles() {
-    const { characterPosition, stageX } = this.props.store;
     const { scale } = this.context;
-    const { x, y } = characterPosition;
-    const targetX = x + stageX;
-
+    const style = this.state.characterPosition.y;
     return {
       position: 'absolute',
-      transform: `translate(${targetX * scale}px, ${y * scale}px)`,
+      transform: `translate({this.state.characterPosition.x * scale}px, {this.state.characterPosition.y * scale}px)`,
       transformOrigin: 'left top',
     };
   }
 
   render() {
-    console.log("Anybody there??")
-    console.log(this.props);
-    const x = this.props.store.characterPosition.x;
-
     return (
-      <div style = {this.getWrapperStyles()}>
-        <Body args={[x, 384, 64, 64]} ref={b => {this.body = b;}}>
-          <Sprite
-            repeat={false}
-            src={require('../Assets/Images/Sprites/RedShip1.png')}
-            scale={this.context.scale * 1}
-            state={0}
-            steps={[1]}
-            tileHeight={200}
-            tileWidth={200}
-          />
-        </Body>
-      </div>
+      <View>
+        <Sprite
+          repeat={false}
+          src={require('../Assets/Images/Sprites/RedShip1.png')}
+          scale={this.context.scale * 1}
+          state={0}
+          steps={[1]}
+          tileHeight={200}
+          tileWidth={200}
+        />
+      </View>
     );
   }
 
