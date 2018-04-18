@@ -8,61 +8,65 @@ import ShipSprite from './GameAssets/Sprite.js';
 
 export default class GamePage extends React.Component {
   constructor(props) {
-  super(props);
-  this.state = {
-    verticalMove: -240,
-    horizontalMove: 240,
-    playerMove: 24
+    super(props);
+    this.state = {
+      verticalMove: -240,
+      horizontalMove: 240,
+      playerMove: 24
+    }
   }
-}
 
-upPress = () => {
-  if (this.state.verticalMove > -600) {
-    this.setState({
-      verticalMove: this.state.verticalMove - this.state.playerMove
-    });
-  } else {
-    this.setState({
-      verticalMove: 96
-    });
+  upPress = () => {
+    if (this.state.verticalMove > -600) {
+      this.setState({
+        verticalMove: this.state.verticalMove - this.state.playerMove
+      });
+    } else {
+      this.setState({
+        verticalMove: 96
+      });
+    }
   }
-}
 
-downPress = () => {
-  if(this.state.verticalMove < 96){
-    this.setState({
-      verticalMove: this.state.verticalMove + this.state.playerMove
-    });
-  } else {
-    this.setState({
-      verticalMove: -600
-    });
+  downPress = () => {
+    if(this.state.verticalMove < 96){
+      this.setState({
+        verticalMove: this.state.verticalMove + this.state.playerMove
+      });
+    } else {
+      this.setState({
+        verticalMove: -600
+      });
+    }
   }
-}
-leftPress = () => {
-  if(this.state.horizontalMove >  -48){
-    this.setState({
-      horizontalMove: this.state.horizontalMove - this.state.playerMove
-    });
-  } else {
-    this.setState({
-      horizontalMove: 312
-    });
-  }
-}
-rightPress = () => {
-  if(this.state.horizontalMove <  312){
-    this.setState({
-      horizontalMove: this.state.horizontalMove + this.state.playerMove
-    });
-  }
-}
-logPress = () => {
-  console.log("top: ", this.state.verticalMove);
-  console.log("left: ", this.state.horizontalMove);
-}
 
+  leftPress = () => {
+    if(this.state.horizontalMove >  -48){
+      this.setState({
+        horizontalMove: this.state.horizontalMove - this.state.playerMove
+      });
+    } else {
+      this.setState({
+        horizontalMove: 312
+      });
+    }
+  }
 
+  rightPress = () => {
+    if(this.state.horizontalMove <  312){
+      this.setState({
+        horizontalMove: this.state.horizontalMove + this.state.playerMove
+      });
+    } else {
+      this.setState({
+        horizontalMove: -48
+      });
+    }
+  }
+  logPress = () => {
+    console.log("top: ", this.state.verticalMove);
+    console.log("left: ", this.state.horizontalMove);
+  }
 
   render() {
     return(
