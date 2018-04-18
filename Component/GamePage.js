@@ -11,13 +11,16 @@ export default class GamePage extends React.Component {
     super(props);
     this.state = {
       verticalMove: -240,
-      horizontalMove: 240,
-      playerMove: 24
+      horizontalMove: 140,
+      playerMove: 24,
+      island1: [-456, 20, -408, 68]
     }
   }
 
   upPress = () => {
-    if (this.state.verticalMove > -600) {
+    if((this.state.verticalMove < this.state.island1[0] || this.state.verticalMove < this.state.island1[2]) && (this.state.horizontalMove < this.state.island1[1] || this.state.horizontalMove < this.state.island1[3])) {
+      console.log("arrr");
+    } else if (this.state.verticalMove > -600) {
       this.setState({
         verticalMove: this.state.verticalMove - this.state.playerMove
       });
@@ -63,9 +66,12 @@ export default class GamePage extends React.Component {
       });
     }
   }
+
   logPress = () => {
     console.log("top: ", this.state.verticalMove);
     console.log("left: ", this.state.horizontalMove);
+    console.log("bottom: ", this.state.verticalMove + 50);
+    console.log("right: ", this.state.horizontalMove + 50);
   }
 
   render() {
@@ -110,6 +116,14 @@ export default class GamePage extends React.Component {
                 upArrow={this.state.verticalMove}
                 leftArrow={this.state.horizontalMove}
               />
+              <TouchableOpacity
+                style={{top: 0, left: 135, zIndex: 10, width: 50, height:50}}
+                onPress= {this.logPress}>
+                  <Image
+                    source={require("./Assets/Images/Arrow.png")}
+                    style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
+                  />
+              </TouchableOpacity>
 
           </World>
         </Stage>
