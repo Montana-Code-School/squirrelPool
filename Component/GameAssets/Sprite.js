@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import Matter from 'matter-js';
+import Matter, { Engine, Events } from 'matter-js';
 import { Sprite, Body, Loop } from 'react-game-kit/native';
 import RedShip1 from '../Assets/Images/Sprites/RedShip1.png';
 
@@ -9,8 +9,6 @@ export default class ShipSprite extends Component {
 
   constructor(props){
     super(props);
-    this.loopID = null;
-    this.lastX = 0;
     this.state = {
       characterState: 0,
       loop: false,
@@ -33,8 +31,8 @@ export default class ShipSprite extends Component {
         <Sprite
           style = {{top: upDown, left: leftRight}}
           repeat={false}
-          src={require('../Assets/Images/Sprites/BigBoatGB.png')}
-          scale={.50}
+          src={require('../Assets/Images/Sprites/BigBoatRO.png')}
+          scale={.5}
           state={0}
           steps={[0]}
           tileHeight={200}
