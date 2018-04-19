@@ -10,17 +10,14 @@ export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove: -384,
-      horizontalMove: 48,
+      verticalMove: 0,
+      horizontalMove: 30,
       playerMove: 24,
-      island1: [-552, 90, -483, 21]
+      island1: [-552, 90, -483, 21],
+      island2: [-54, 258, 9, 321],
     }
   }
 
-// const island1VertCollision = (this.state.verticalMove > this.state.island1[0])
-//     && (this.state.verticalMove < this.state.island1[2]);
-// const island1HorzCollision = (this.state.horizontalMove > this.state.island1[1]
-//     && this.state.horizontalMove < this.state.island1[3]);
 
   upPress = () => {
     if(this.state.verticalMove > this.state.island1[0]
@@ -29,6 +26,12 @@ export default class GamePage extends React.Component {
         && this.state.horizontalMove > this.state.island1[3])
     {
       console.log("arrr");
+    } else if (this.state.verticalMove > this.state.island2[0]
+        && this.state.verticalMove < this.state.island2[2]
+        && this.state.horizontalMove < this.state.island2[1]
+        && this.state.horizontalMove > this.state.island2[3])
+    {
+      console.log("2nd arrr");
     } else if (this.state.verticalMove > -624) {
       this.setState({
         verticalMove: this.state.verticalMove - this.state.playerMove
@@ -97,8 +100,8 @@ export default class GamePage extends React.Component {
   logPress = () => {
     console.log("top: ", this.state.verticalMove);
     console.log("left: ", this.state.horizontalMove);
-    console.log("bottom: ", this.state.verticalMove + 50);
-    console.log("right: ", this.state.horizontalMove + 50);
+    console.log("bottom: ", this.state.verticalMove + 69);
+    console.log("right: ", this.state.horizontalMove + 69);
   }
 
   render() {
