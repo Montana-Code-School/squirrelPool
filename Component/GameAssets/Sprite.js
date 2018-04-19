@@ -35,8 +35,8 @@ export default class ShipSprite extends Component {
           scale={.5}
           state={0}
           steps={[0]}
-          tileHeight={200}
-          tileWidth={200}
+          tileHeight={100}
+          tileWidth={100}
         />
       </View>
     );

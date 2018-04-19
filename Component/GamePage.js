@@ -10,17 +10,26 @@ export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove: -240,
-      horizontalMove: 140,
+      verticalMove: -384,
+      horizontalMove: 48,
       playerMove: 24,
-      island1: [-456, 20, -408, 68]
+      island1: [-552, 90, -483, 21]
     }
   }
 
+// const island1VertCollision = (this.state.verticalMove > this.state.island1[0])
+//     && (this.state.verticalMove < this.state.island1[2]);
+// const island1HorzCollision = (this.state.horizontalMove > this.state.island1[1]
+//     && this.state.horizontalMove < this.state.island1[3]);
+
   upPress = () => {
-    if((this.state.verticalMove < this.state.island1[0] || this.state.verticalMove < this.state.island1[2]) && (this.state.horizontalMove < this.state.island1[1] || this.state.horizontalMove < this.state.island1[3])) {
+    if(this.state.verticalMove > this.state.island1[0]
+        && this.state.verticalMove < this.state.island1[2]
+        && this.state.horizontalMove < this.state.island1[1]
+        && this.state.horizontalMove > this.state.island1[3])
+    {
       console.log("arrr");
-    } else if (this.state.verticalMove > -600) {
+    } else if (this.state.verticalMove > -624) {
       this.setState({
         verticalMove: this.state.verticalMove - this.state.playerMove
       });
@@ -32,37 +41,55 @@ export default class GamePage extends React.Component {
   }
 
   downPress = () => {
-    if(this.state.verticalMove < 96){
+    if(this.state.verticalMove > (this.state.island1[0] - 31)
+        && this.state.verticalMove < (this.state.island1[2] - 31)
+        && this.state.horizontalMove < this.state.island1[1]
+        && this.state.horizontalMove > this.state.island1[3])
+    {
+      console.log("arrr");
+    } else if(this.state.verticalMove < 96){
       this.setState({
         verticalMove: this.state.verticalMove + this.state.playerMove
       });
     } else {
       this.setState({
-        verticalMove: -600
+        verticalMove: -624
       });
     }
   }
 
   leftPress = () => {
-    if(this.state.horizontalMove >  -48){
+    if(this.state.verticalMove > (this.state.island1[0] - 31)
+        && this.state.verticalMove < (this.state.island1[2] - 31)
+        && this.state.horizontalMove < (this.state.island1[1] + 16)
+        && this.state.horizontalMove > (this.state.island1[3] + 16))
+    {
+      console.log("arrr");
+    } else if(this.state.horizontalMove >  -24){
       this.setState({
         horizontalMove: this.state.horizontalMove - this.state.playerMove
       });
     } else {
       this.setState({
-        horizontalMove: 312
+        horizontalMove: 336
       });
     }
   }
 
   rightPress = () => {
-    if(this.state.horizontalMove <  312){
+    if(this.state.verticalMove > (this.state.island1[0] - 31)
+        && this.state.verticalMove < (this.state.island1[2] - 31)
+        && this.state.horizontalMove < (this.state.island1[1])
+        && this.state.horizontalMove > (this.state.island1[3]))
+    {
+      console.log("arrr");
+    } else if(this.state.horizontalMove <  336){
       this.setState({
         horizontalMove: this.state.horizontalMove + this.state.playerMove
       });
     } else {
       this.setState({
-        horizontalMove: -48
+        horizontalMove: -24
       });
     }
   }
@@ -78,53 +105,52 @@ export default class GamePage extends React.Component {
     return(
       <Loop>
         <Stage width={576} height={1024}>
-        <World>
+          <World>
             <WaterTileMap />
-              <TouchableOpacity
-                style={{top: 275, left: 182, zIndex: 10, width: 50, height:50}}
-                onPress= {this.upPress}>
-                  <Image
-                    source={require("./Assets/Images/Arrow.png")}
-                    style={{width: 50, height: 50}}
-                  />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{top: 300, left: 182, zIndex: 10, width: 50, height:50}}
-                onPress= {this.downPress}>
-                  <Image
-                    source={require("./Assets/Images/Arrow.png")}
-                    style={{width: 50, height: 50, transform: [{rotate: "180deg"}]}}
-                  />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{top: 212, left: 230, zIndex: 10, width: 50, height:50}}
-                onPress= {this.rightPress}>
-                  <Image
-                    source={require("./Assets/Images/Arrow.png")}
-                    style={{width: 50, height: 50, transform: [{rotate: "90deg"}]}}
-                  />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{top: 162, left: 135, zIndex: 10, width: 50, height:50}}
-                onPress= {this.leftPress}>
-                  <Image
-                    source={require("./Assets/Images/Arrow.png")}
-                    style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
-                  />
-              </TouchableOpacity>
-              <ShipSprite
-                upArrow={this.state.verticalMove}
-                leftArrow={this.state.horizontalMove}
-              />
-              <TouchableOpacity
-                style={{top: 0, left: 135, zIndex: 10, width: 50, height:50}}
-                onPress= {this.logPress}>
-                  <Image
-                    source={require("./Assets/Images/Arrow.png")}
-                    style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
-                  />
-              </TouchableOpacity>
-
+            <TouchableOpacity
+              style={{top: 225, left: 182, zIndex: 10, width: 50, height:50}}
+              onPress= {this.upPress}>
+                <Image
+                  source={require("./Assets/Images/Arrow.png")}
+                  style={{width: 50, height: 50}}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{top: 250, left: 182, zIndex: 10, width: 50, height:50}}
+              onPress= {this.downPress}>
+                <Image
+                  source={require("./Assets/Images/Arrow.png")}
+                  style={{width: 50, height: 50, transform: [{rotate: "180deg"}]}}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{top: 162, left: 230, zIndex: 10, width: 50, height:50}}
+              onPress= {this.rightPress}>
+                <Image
+                  source={require("./Assets/Images/Arrow.png")}
+                  style={{width: 50, height: 50, transform: [{rotate: "90deg"}]}}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{top: 112, left: 135, zIndex: 10, width: 50, height:50}}
+              onPress= {this.leftPress}>
+                <Image
+                  source={require("./Assets/Images/Arrow.png")}
+                  style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
+                />
+            </TouchableOpacity>
+            <ShipSprite
+              upArrow={this.state.verticalMove}
+              leftArrow={this.state.horizontalMove}
+            />
+            <TouchableOpacity
+              style={{top: 0, left: 35, zIndex: 10, width: 50, height:50}}
+              onPress= {this.logPress}>
+                <Image
+                  source={require("./Assets/Images/Arrow.png")}
+                  style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
+                />
+            </TouchableOpacity>
           </World>
         </Stage>
       </Loop>
