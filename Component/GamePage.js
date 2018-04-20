@@ -11,27 +11,28 @@ export default class GamePage extends React.Component {
     super(props);
     this.state = {
       verticalMove: 0,
-      horizontalMove: 30,
+      horizontalMove: -24,
       playerMove: 24,
-      island1: [-552, 90, -483, 21],
-      island2: [-54, 258, 9, 321],
+      island1: [-502, 90, -433, 21],
+      island2: [-54, 258, 15, 189],
     }
   }
 
 
   upPress = () => {
-    if(this.state.verticalMove > this.state.island1[0]
+    if((this.state.verticalMove > this.state.island1[0]
         && this.state.verticalMove < this.state.island1[2]
         && this.state.horizontalMove < this.state.island1[1]
         && this.state.horizontalMove > this.state.island1[3])
-    {
-      console.log("arrr");
-    } else if (this.state.verticalMove > this.state.island2[0]
+        ||
+        (this.state.verticalMove > this.state.island2[0]
         && this.state.verticalMove < this.state.island2[2]
         && this.state.horizontalMove < this.state.island2[1]
-        && this.state.horizontalMove > this.state.island2[3])
+        && this.state.horizontalMove > this.state.island2[3]))
     {
-      console.log("2nd arrr");
+        this.setState({
+          verticalMove: this.state.verticalMove + 24
+        })
     } else if (this.state.verticalMove > -624) {
       this.setState({
         verticalMove: this.state.verticalMove - this.state.playerMove
@@ -44,12 +45,20 @@ export default class GamePage extends React.Component {
   }
 
   downPress = () => {
-    if(this.state.verticalMove > (this.state.island1[0] - 31)
-        && this.state.verticalMove < (this.state.island1[2] - 31)
+    if((this.state.verticalMove > this.state.island1[0]
+        && this.state.verticalMove < this.state.island1[2]
         && this.state.horizontalMove < this.state.island1[1]
         && this.state.horizontalMove > this.state.island1[3])
+        ||
+        (this.state.verticalMove > this.state.island2[0]
+        && this.state.verticalMove < this.state.island2[2]
+        && this.state.horizontalMove < this.state.island2[1]
+        && this.state.horizontalMove > this.state.island2[3]))
     {
-      console.log("arrr");
+        console.log("arr hit one o th two islands!");
+        this.setState({
+          verticalMove: this.state.verticalMove - 24
+        })
     } else if(this.state.verticalMove < 96){
       this.setState({
         verticalMove: this.state.verticalMove + this.state.playerMove
@@ -62,12 +71,20 @@ export default class GamePage extends React.Component {
   }
 
   leftPress = () => {
-    if(this.state.verticalMove > (this.state.island1[0] - 31)
-        && this.state.verticalMove < (this.state.island1[2] - 31)
-        && this.state.horizontalMove < (this.state.island1[1] + 16)
-        && this.state.horizontalMove > (this.state.island1[3] + 16))
+    if((this.state.verticalMove > this.state.island1[0]
+        && this.state.verticalMove < this.state.island1[2]
+        && this.state.horizontalMove < this.state.island1[1]
+        && this.state.horizontalMove > this.state.island1[3])
+        ||
+        (this.state.verticalMove > this.state.island2[0]
+        && this.state.verticalMove < this.state.island2[2]
+        && this.state.horizontalMove < this.state.island2[1]
+        && this.state.horizontalMove > this.state.island2[3]))
     {
-      console.log("arrr");
+        console.log("arr hit one o th two islands!");
+        this.setState({
+          horizontalMove: this.state.horizontalMove + 24
+        })
     } else if(this.state.horizontalMove >  -24){
       this.setState({
         horizontalMove: this.state.horizontalMove - this.state.playerMove
@@ -80,12 +97,20 @@ export default class GamePage extends React.Component {
   }
 
   rightPress = () => {
-    if(this.state.verticalMove > (this.state.island1[0] - 31)
-        && this.state.verticalMove < (this.state.island1[2] - 31)
-        && this.state.horizontalMove < (this.state.island1[1])
-        && this.state.horizontalMove > (this.state.island1[3]))
+    if((this.state.verticalMove > this.state.island1[0]
+        && this.state.verticalMove < this.state.island1[2]
+        && this.state.horizontalMove < this.state.island1[1]
+        && this.state.horizontalMove > this.state.island1[3])
+        ||
+        (this.state.verticalMove > this.state.island2[0]
+        && this.state.verticalMove < this.state.island2[2]
+        && this.state.horizontalMove < this.state.island2[1]
+        && this.state.horizontalMove > this.state.island2[3]))
     {
-      console.log("arrr");
+        console.log("arr hit one o th two islands!");
+        this.setState({
+          horizontalMove: this.state.horizontalMove - 24
+        })
     } else if(this.state.horizontalMove <  336){
       this.setState({
         horizontalMove: this.state.horizontalMove + this.state.playerMove
