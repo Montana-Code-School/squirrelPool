@@ -40,6 +40,27 @@ export default class WaterTileMap extends React.Component {
             0,0,0,0,0,0,
           ],
         ]}
+      /><TileMap
+        style = {{}}
+        src = {require('../Assets/Images/TREASURE1.png')}
+        sourceWidth = {100}
+        tileSize = {96}
+        columns = {6}
+        rows = {10}
+        layers = {[
+          [
+            0,0,0,0,0,0,
+            0,1,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+            0,0,0,0,0,0,
+          ],
+        ]}
       />
       <TileMap
         style = {{}}
