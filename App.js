@@ -3,6 +3,7 @@ import { YellowBox, TouchableHighlight, Alert, Image, StyleSheet, Text, View } f
 import LandingPage from './Component/LandingPage.js';
 import PropTypes from 'prop-types';
 import GamePage from './Component/GamePage.js';
+import WinPage from './Component/WinPage.js';
 import { StackNavigator } from 'react-navigation';
 
 const RootStack =
@@ -14,6 +15,10 @@ const RootStack =
     GamePage: {
       screen: GamePage,
       name: 'Game Page',
+    },
+    WinPage: {
+      screen : WinPage,
+      name: 'Win Page',
     },
   },
   {initialRouteName: 'GamePage',
