@@ -11,28 +11,38 @@ export default class GamePage extends React.Component {
     super(props);
     this.state = {
       verticalMove: 0,
-      horizontalMove: -24,
+      horizontalMove: 0,
       playerMove: 24,
       island1: [-502, 90, -433, 21],
       island2: [-54, 258, 15, 189],
+      treasure: [-502, 90, -433, 21]
     }
   }
-
+  winPageNav(){
+    this.props.navigation.navigate('EndingPage');
+  }
 
   upPress = () => {
-    if((this.state.verticalMove > this.state.island1[0]
-        && this.state.verticalMove < this.state.island1[2]
-        && this.state.horizontalMove < this.state.island1[1]
-        && this.state.horizontalMove > this.state.island1[3])
-        ||
-        (this.state.verticalMove > this.state.island2[0]
-        && this.state.verticalMove < this.state.island2[2]
-        && this.state.horizontalMove < this.state.island2[1]
-        && this.state.horizontalMove > this.state.island2[3]))
+    // if((this.state.verticalMove > this.state.island1[0]
+    //     && this.state.verticalMove < this.state.island1[2]
+    //     && this.state.horizontalMove < this.state.island1[1]
+    //     && this.state.horizontalMove > this.state.island1[3])
+    //     ||
+    //     (this.state.verticalMove > this.state.island2[0]
+    //     && this.state.verticalMove < this.state.island2[2]
+    //     && this.state.horizontalMove < this.state.island2[1]
+    //     && this.state.horizontalMove > this.state.island2[3]))
+    // {
+    //   this.setState({
+    //     verticalMove: this.state.verticalMove + 24
+    //   })
+    // } else
+    if(this.state.verticalMove > this.state.treasure[0]
+        && this.state.verticalMove < this.state.treasure[2]
+        && this.state.horizontalMove < this.state.treasure[1]
+        && this.state.horizontalMove > this.state.treasure[3])
     {
-        this.setState({
-          verticalMove: this.state.verticalMove + 24
-        })
+      this.winPageNav();
     } else if (this.state.verticalMove > -624) {
       this.setState({
         verticalMove: this.state.verticalMove - this.state.playerMove
@@ -136,7 +146,7 @@ export default class GamePage extends React.Component {
           <World>
             <WaterTileMap />
             <TouchableOpacity
-              style={{top: 225, left: 182, zIndex: 10, width: 50, height:50}}
+              style={{top: 175, left: 182, zIndex: 10, width: 50, height:50}}
               onPress= {this.upPress}>
                 <Image
                   source={require("./Assets/Images/Arrow.png")}
@@ -144,7 +154,7 @@ export default class GamePage extends React.Component {
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 250, left: 182, zIndex: 10, width: 50, height:50}}
+              style={{top: 200, left: 182, zIndex: 10, width: 50, height:50}}
               onPress= {this.downPress}>
                 <Image
                   source={require("./Assets/Images/Arrow.png")}
@@ -152,7 +162,7 @@ export default class GamePage extends React.Component {
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 162, left: 230, zIndex: 10, width: 50, height:50}}
+              style={{top: 112, left: 230, zIndex: 10, width: 50, height:50}}
               onPress= {this.rightPress}>
                 <Image
                   source={require("./Assets/Images/Arrow.png")}
@@ -160,7 +170,7 @@ export default class GamePage extends React.Component {
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 112, left: 135, zIndex: 10, width: 50, height:50}}
+              style={{top: 62, left: 135, zIndex: 10, width: 50, height:50}}
               onPress= {this.leftPress}>
                 <Image
                   source={require("./Assets/Images/Arrow.png")}
@@ -171,14 +181,6 @@ export default class GamePage extends React.Component {
               upArrow={this.state.verticalMove}
               leftArrow={this.state.horizontalMove}
             />
-            <TouchableOpacity
-              style={{top: 0, left: 35, zIndex: 10, width: 50, height:50}}
-              onPress= {this.logPress}>
-                <Image
-                  source={require("./Assets/Images/Arrow.png")}
-                  style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
-                />
-            </TouchableOpacity>
           </World>
         </Stage>
       </Loop>
