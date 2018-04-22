@@ -12,106 +12,124 @@ export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove: [0, 1],
-      horizontalMove: [0, 100],
-      currentPlayer: 1,
+      verticalMove: [0, 0],
+      horizontalMove: [0, 96],
+      playerTurn: 0,
+      notPlayerTurn: 1,
       playerMove: 48,
       island1: [-502, 90, -453, 21],
       island2: [-4, 258, 65, 189],
     }
   }
+
   winPageNav(){
     this.props.navigation.navigate('EndingPage');
   }
-
-  upPress = () => {
-    if((this.state.verticalMove[0] > this.state.island1[0]
-        && this.state.verticalMove[0] < this.state.island1[2]
-        && this.state.horizontalMove[0] < this.state.island1[1]
-        && this.state.horizontalMove[0] > this.state.island1[3])
-        ||
-        (this.state.verticalMove[0] > this.state.island2[0]
-        && this.state.verticalMove[0] < this.state.island2[2]
-        && this.state.horizontalMove[0] < this.state.island2[1]
-        && this.state.horizontalMove[0] > this.state.island2[3]))
-    {
-      this.winPageNav();
-    } else if (this.state.verticalMove[0] > -576) {
+  turnAlternator = () => {
+    if (this.state.playerTurn == 0) {
       this.setState({
-        verticalMove: [this.state.verticalMove[0] - this.state.playerMove, this.state.verticalMove[1]]
+        playerTurn: 1,
+        notPlayerTurn: 0
       });
     } else {
       this.setState({
-        verticalMove: [96, this.state.verticalMove[1]]
+        playerTurn: 0,
+        notPlayerTurn: 1
+      });
+    }
+  }
+  upPress = () => {
+    this.turnAlternator();
+    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
+        ||
+        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
+    {
+      this.winPageNav();
+    } else if (this.state.verticalMove[this.state.playerTurn] > -576) {
+      this.setState({
+        verticalMove: [this.state.verticalMove[this.state.playerTurn] - this.state.playerMove, this.state.verticalMove[this.state.notPlayerTurn]]
+      });
+    } else {
+      this.setState({
+        verticalMove: [96, this.state.verticalMove[this.state.notPlayerTurn]]
       });
     }
   }
 
   downPress = () => {
-    if((this.state.verticalMove[0] > this.state.island1[0]
-        && this.state.verticalMove[0] < this.state.island1[2]
-        && this.state.horizontalMove[0] < this.state.island1[1]
-        && this.state.horizontalMove[0] > this.state.island1[3])
+    this.turnAlternator();
+    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
         ||
-        (this.state.verticalMove[0] > this.state.island2[0]
-        && this.state.verticalMove[0] < this.state.island2[2]
-        && this.state.horizontalMove[0] < this.state.island2[1]
-        && this.state.horizontalMove[0] > this.state.island2[3]))
+        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.verticalMove[0] < 134){
+    } else if(this.state.verticalMove[this.state.playerTurn] < 134){
       this.setState({
-        verticalMove: [this.state.verticalMove[0] + this.state.playerMove, this.state.verticalMove[1]]
+        verticalMove: [this.state.verticalMove[this.state.playerTurn] + this.state.playerMove, this.state.verticalMove[this.state.notPlayerTurn]]
       });
     } else {
       this.setState({
-        verticalMove: [-624, this.state.verticalMove[1]]
+        verticalMove: [-624, this.state.verticalMove[this.state.notPlayerTurn]]
       });
     }
   }
 
   leftPress = () => {
-    if((this.state.verticalMove[0] > this.state.island1[0]
-        && this.state.verticalMove[0] < this.state.island1[2]
-        && this.state.horizontalMove[0] < this.state.island1[1]
-        && this.state.horizontalMove[0] > this.state.island1[3])
+    this.turnAlternator();
+    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
         ||
-        (this.state.verticalMove[0] > this.state.island2[0]
-        && this.state.verticalMove[0] < this.state.island2[2]
-        && this.state.horizontalMove[0] < this.state.island2[1]
-        && this.state.horizontalMove[0] > this.state.island2[3]))
+        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.horizontalMove[0] >  -24){
+    } else if(this.state.horizontalMove[this.state.playerTurn] >  -24){
       this.setState({
-        horizontalMove: [this.state.horizontalMove[0] - this.state.playerMove, this.state.horizontalMove[1]]
+        horizontalMove: [this.state.horizontalMove[this.state.playerTurn] - this.state.playerMove, this.state.horizontalMove[this.state.notPlayerTurn]]
       });
     } else {
       this.setState({
-        horizontalMove: [336, this.state.horizontalMove[1]]
+        horizontalMove: [336, this.state.horizontalMove[this.state.notPlayerTurn]]
       });
     }
   }
 
   rightPress = () => {
-    if((this.state.verticalMove[0] > this.state.island1[0]
-        && this.state.verticalMove[0] < this.state.island1[2]
-        && this.state.horizontalMove[0] < this.state.island1[1]
-        && this.state.horizontalMove[0] > this.state.island1[3])
+    this.turnAlternator();
+    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
         ||
-        (this.state.verticalMove[0] > this.state.island2[0]
-        && this.state.verticalMove[0] < this.state.island2[2]
-        && this.state.horizontalMove[0] < this.state.island2[1]
-        && this.state.horizontalMove[0] > this.state.island2[3]))
+        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
+        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
+        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
+        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.horizontalMove[0] <  336){
+    } else if(this.state.horizontalMove[this.state.playerTurn] <  336){
       this.setState({
-        horizontalMove: [this.state.horizontalMove[0] + this.state.playerMove, this.state.horizontalMove[1]]
+        horizontalMove: [this.state.horizontalMove[this.state.playerTurn] + this.state.playerMove, this.state.horizontalMove[this.state.notPlayerTurn]]
       });
     } else {
       this.setState({
-        horizontalMove: [-24, this.state.horizontalMove[1]]
+        horizontalMove: [-24, this.state.horizontalMove[this.state.notPlayerTurn]]
       });
     }
   }
