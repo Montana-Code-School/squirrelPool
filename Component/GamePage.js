@@ -12,10 +12,14 @@ export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove: [0, 0],
-      horizontalMove: [0, 96],
+      verticalMove: 0,
+      horizontalMove: 0,
+      verticalMove2: 0,
+      horizontalMove2: 0,
+      currentHorizontal: 0,
+      currentVertical: 0,
       playerTurn: 0,
-      notPlayerTurn: 1,
+      moveCount: 0,
       playerMove: 48,
       island1: [-502, 90, -453, 21],
       island2: [-4, 258, 65, 189],
@@ -25,113 +29,157 @@ export default class GamePage extends React.Component {
   winPageNav(){
     this.props.navigation.navigate('EndingPage');
   }
+
   turnAlternator = () => {
     if (this.state.playerTurn == 0) {
       this.setState({
-        playerTurn: 1,
-        notPlayerTurn: 0
+        currentVertical: this.state.verticalMove,
+        currentHorizontal: this.state.horizontalMove
       });
-    } else {
+    } else if(this.state.playerTurn == 1) {
       this.setState({
-        playerTurn: 0,
-        notPlayerTurn: 1
+        currentVertical: this.state.verticalMove2,
+        currentHorizontal: this.state.horizontalMove2
       });
     }
   }
+
+  placementAssigner = () => {
+    if(this.state.playerTurn == 0){
+      this.setState({
+        verticalMove: this.state.currentVertical,
+        horizontalMove: this.state.currentHorizontal
+      });
+    } else if(this.state.playerTurn == 1) {
+      this.setState({
+        verticalMove2: this.state.currentVertical,
+        horizontalMove2: this.state.currentHorizontal
+      })
+    }
+    console.log("playerTurn >>>", this.state.playerTurn,"currentVertical >>>", this.state.currentVertical, "currentHorizontal >>>", this.state.currentHorizontal, "moveCount >>>", this.state.moveCount);
+  }
+
+  turnReset = () => {
+    this.setState({moveCount: this.state.moveCount + 1})
+    if(this.state.moveCount == 3 && this.state.playerTurn == 0) {
+      this.setState({
+        playerTurn: 1,
+        moveCount: 0,
+      });
+    } else if(this.state.moveCount == 3 && this.state.playerTurn == 1) {
+      this.setState({
+        playerTurn: 0,
+        moveCount: 0,
+      });
+    }
+  }
+
   upPress = () => {
+    this.turnReset();
+    this.placementAssigner();
     this.turnAlternator();
-    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
+    if((this.state.currentVertical > this.state.island1[0]
+        && this.state.currentVertical < this.state.island1[2]
+        && this.state.currentHorizontal < this.state.island1[1]
+        && this.state.currentHorizontal > this.state.island1[3])
         ||
-        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
+        (this.state.currentVertical > this.state.island2[0]
+        && this.state.currentVertical < this.state.island2[2]
+        && this.state.currentHorizontal < this.state.island2[1]
+        && this.state.currentHorizontal > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if (this.state.verticalMove[this.state.playerTurn] > -576) {
+    } else if (this.state.currentVertical > -576) {
       this.setState({
-        verticalMove: [this.state.verticalMove[this.state.playerTurn] - this.state.playerMove, this.state.verticalMove[this.state.notPlayerTurn]]
+        currentVertical: this.state.currentVertical - this.state.playerMove
       });
     } else {
       this.setState({
-        verticalMove: [96, this.state.verticalMove[this.state.notPlayerTurn]]
+        currentVertical: 96
       });
     }
+    this.placementAssigner();
   }
 
   downPress = () => {
+    this.turnReset();
+    this.placementAssigner();
     this.turnAlternator();
-    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
+    if((this.state.currentVertical > this.state.island1[0]
+        && this.state.currentVertical < this.state.island1[2]
+        && this.state.currentHorizontal < this.state.island1[1]
+        && this.state.currentHorizontal > this.state.island1[3])
         ||
-        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
+        (this.state.currentVertical > this.state.island2[0]
+        && this.state.currentVertical < this.state.island2[2]
+        && this.state.currentHorizontal < this.state.island2[1]
+        && this.state.currentHorizontal > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.verticalMove[this.state.playerTurn] < 134){
+    } else if(this.state.currentVertical < 134){
       this.setState({
-        verticalMove: [this.state.verticalMove[this.state.playerTurn] + this.state.playerMove, this.state.verticalMove[this.state.notPlayerTurn]]
+        currentVertical: this.state.currentVertical + this.state.playerMove
       });
     } else {
       this.setState({
-        verticalMove: [-624, this.state.verticalMove[this.state.notPlayerTurn]]
+        currentVertical: -624
       });
     }
+    this.placementAssigner();
   }
 
   leftPress = () => {
+    this.turnReset();
+    this.placementAssigner();
     this.turnAlternator();
-    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
+    if((this.state.currentVertical > this.state.island1[0]
+        && this.state.currentVertical < this.state.island1[2]
+        && this.state.currentHorizontal < this.state.island1[1]
+        && this.state.currentHorizontal > this.state.island1[3])
         ||
-        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
+        (this.state.currentVertical > this.state.island2[0]
+        && this.state.currentVertical < this.state.island2[2]
+        && this.state.currentHorizontal < this.state.island2[1]
+        && this.state.currentHorizontal > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.horizontalMove[this.state.playerTurn] >  -24){
+    } else if(this.state.currentHorizontal >  -24){
       this.setState({
-        horizontalMove: [this.state.horizontalMove[this.state.playerTurn] - this.state.playerMove, this.state.horizontalMove[this.state.notPlayerTurn]]
+        currentHorizontal: this.state.currentHorizontal - this.state.playerMove
       });
     } else {
       this.setState({
-        horizontalMove: [336, this.state.horizontalMove[this.state.notPlayerTurn]]
+        currentHorizontal: 336
       });
     }
+    this.placementAssigner();
   }
 
   rightPress = () => {
+    this.turnReset();
+    this.placementAssigner();
     this.turnAlternator();
-    if((this.state.verticalMove[this.state.playerTurn] > this.state.island1[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island1[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island1[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island1[3])
+    if((this.state.currentVertical > this.state.island1[0]
+        && this.state.currentVertical < this.state.island1[2]
+        && this.state.currentHorizontal < this.state.island1[1]
+        && this.state.currentHorizontal > this.state.island1[3])
         ||
-        (this.state.verticalMove[this.state.playerTurn] > this.state.island2[0]
-        && this.state.verticalMove[this.state.playerTurn] < this.state.island2[2]
-        && this.state.horizontalMove[this.state.playerTurn] < this.state.island2[1]
-        && this.state.horizontalMove[this.state.playerTurn] > this.state.island2[3]))
+        (this.state.currentVertical > this.state.island2[0]
+        && this.state.currentVertical < this.state.island2[2]
+        && this.state.currentHorizontal < this.state.island2[1]
+        && this.state.currentHorizontal > this.state.island2[3]))
     {
       this.winPageNav();
-    } else if(this.state.horizontalMove[this.state.playerTurn] <  336){
+    } else if(this.state.currentHorizontal <  336){
       this.setState({
-        horizontalMove: [this.state.horizontalMove[this.state.playerTurn] + this.state.playerMove, this.state.horizontalMove[this.state.notPlayerTurn]]
+        currentHorizontal: this.state.currentHorizontal + this.state.playerMove
       });
     } else {
       this.setState({
-        horizontalMove: [-24, this.state.horizontalMove[this.state.notPlayerTurn]]
+        currentHorizontal: -24
       });
     }
+    this.placementAssigner();
   }
 
   render() {
@@ -173,12 +221,12 @@ export default class GamePage extends React.Component {
                 />
             </TouchableOpacity>
             <ShipSprite
-              upArrow={this.state.verticalMove[0]}
-              leftArrow={this.state.horizontalMove[0]}
+              upArrow={this.state.verticalMove}
+              leftArrow={this.state.horizontalMove}
             />
             <ShipSprite2
-              upArrow2 ={this.state.verticalMove[1]}
-              leftArrow2 ={this.state.horizontalMove[1]}
+              upArrow2 ={this.state.verticalMove2}
+              leftArrow2 ={this.state.horizontalMove2}
               />
           </World>
         </Stage>
