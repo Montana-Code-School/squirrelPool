@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableHighlight, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import GamePage from './GamePage.js'
+import InstructionPage from './Instruction.js'
 
 export default class LandingPage extends React.Component {
 
@@ -11,7 +11,7 @@ constructor(props) {
 }
 
 gamePageNav(e){
-  this.props.navigation.navigate('GamePage');
+  this.props.navigation.navigate('InstructionPage');
 }
 
   render () {
@@ -24,13 +24,13 @@ gamePageNav(e){
           style={landingPageStyle.landingImage}
          />
         <Text style={landingPageStyle.startTitle}>Start Yer Adventure</Text>
-        <TouchableHighlight
+        <TouchableWithoutFeedback
         style={landingPageStyle.startButton}
           onPress={(e) => this.gamePageNav(e)}>
             <Image source={require('./Assets/Images/FLAG.png')}
             style={landingPageStyle.startButton}
          />
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
       </View>
     );
   }

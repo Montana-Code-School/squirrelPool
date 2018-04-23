@@ -5,6 +5,7 @@ import GamePage from './Component/GamePage.js';
 import LandingPage from './Component/LandingPage.js';
 import EndingPage from './Component/EndingPage.js';
 import EndingPage2 from './Component/EndingPage2.js';
+import InstructionPage from './Component/Instruction.js';
 import { StackNavigator } from 'react-navigation';
 
 const RootStack =
@@ -24,9 +25,13 @@ const RootStack =
     EndingPage2: {
       screen: EndingPage2,
       name: 'End Page 2',
+    },
+    InstructionPage: {
+      screen: InstructionPage,
+      name: 'Instructions',
     }
   },
-  {initialRouteName: 'GamePage',
+  {initialRouteName: 'LandingPage',
    headerMode: 'none'
   }
 )
