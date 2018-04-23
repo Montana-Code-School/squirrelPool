@@ -7,18 +7,19 @@ import WaterTileMap from './GameAssets/WaterTileMap.js'
 import ShipSprite from './GameAssets/Sprite.js';
 import ShipSprite2 from './GameAssets/Sprite2.js';
 
-
+let vertical;
+let horizontal;
 export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove: 0,
-      horizontalMove: 0,
+      verticalMove1: 0,
+      horizontalMove1: 0,
       verticalMove2: 0,
       horizontalMove2: 0,
       currentHorizontal: 0,
       currentVertical: 0,
-      playerTurn: 0,
+      playerTurn: 1,
       moveCount: 0,
       playerMove: 48,
       island1: [-502, 90, -453, 21],
@@ -27,159 +28,150 @@ export default class GamePage extends React.Component {
   }
 
   winPageNav(){
-    this.props.navigation.navigate('EndingPage');
+    if((vertical > this.state.island1[0]
+        && vertical < this.state.island1[2]
+        && horizontal < this.state.island1[1]
+        && horizontal > this.state.island1[3])
+        ||
+        (vertical > this.state.island2[0]
+        && vertical < this.state.island2[2]
+        && horizontal < this.state.island2[1]
+        && horizontal > this.state.island2[3])){
+          this.props.navigation.navigate('EndingPage');
+        }
   }
 
   turnAlternator = () => {
-    if (this.state.playerTurn == 0) {
-      this.setState({
-        currentVertical: this.state.verticalMove,
-        currentHorizontal: this.state.horizontalMove
-      });
-    } else if(this.state.playerTurn == 1) {
-      this.setState({
-        currentVertical: this.state.verticalMove2,
-        currentHorizontal: this.state.horizontalMove2
-      });
+    if (this.state.playerTurn == 1) {
+      horizontal = this.state.horizontalMove1;
+      vertical = this.state.verticalMove1;
+    } else if(this.state.playerTurn == 2) {
+      horizontal = this.state.horizontalMove2;
+      vertical = this.state.verticalMove2;
     }
   }
 
-  placementAssigner = () => {
-    if(this.state.playerTurn == 0){
-      this.setState({
-        verticalMove: this.state.currentVertical,
-        horizontalMove: this.state.currentHorizontal
-      });
-    } else if(this.state.playerTurn == 1) {
-      this.setState({
-        verticalMove2: this.state.currentVertical,
-        horizontalMove2: this.state.currentHorizontal
-      })
-    }
-    console.log("playerTurn >>>", this.state.playerTurn,"currentVertical >>>", this.state.currentVertical, "currentHorizontal >>>", this.state.currentHorizontal, "moveCount >>>", this.state.moveCount);
-  }
-
-  turnReset = () => {
+  turnCounter = () => {
     this.setState({moveCount: this.state.moveCount + 1})
-    if(this.state.moveCount == 3 && this.state.playerTurn == 0) {
+    if(this.state.moveCount == 2 && this.state.playerTurn == 2) {
       this.setState({
         playerTurn: 1,
         moveCount: 0,
       });
-    } else if(this.state.moveCount == 3 && this.state.playerTurn == 1) {
+    } else if(this.state.moveCount == 2 && this.state.playerTurn == 1) {
       this.setState({
-        playerTurn: 0,
+        playerTurn: 2,
         moveCount: 0,
       });
     }
   }
 
   upPress = () => {
-    this.turnReset();
-    this.placementAssigner();
+    this.turnCounter();
     this.turnAlternator();
-    if((this.state.currentVertical > this.state.island1[0]
-        && this.state.currentVertical < this.state.island1[2]
-        && this.state.currentHorizontal < this.state.island1[1]
-        && this.state.currentHorizontal > this.state.island1[3])
-        ||
-        (this.state.currentVertical > this.state.island2[0]
-        && this.state.currentVertical < this.state.island2[2]
-        && this.state.currentHorizontal < this.state.island2[1]
-        && this.state.currentHorizontal > this.state.island2[3]))
-    {
-      this.winPageNav();
-    } else if (this.state.currentVertical > -576) {
+    this.winPageNav();
+    if (this.state.playerTurn == 1) {
+      if (vertical > -576) {
       this.setState({
-        currentVertical: this.state.currentVertical - this.state.playerMove
+        verticalMove1: vertical - this.state.playerMove
       });
     } else {
       this.setState({
-        currentVertical: 96
+        verticalMove1: 96
       });
     }
-    this.placementAssigner();
+    } else if(this.state.playerTurn == 2) {
+      if(vertical > -576){
+        this.setState({
+          verticalMove2: vertical - this.state.playerMove
+        });
+      } else{
+        this.setState({
+          verticalMove2: 96
+        });
+      }
+    }
   }
 
   downPress = () => {
-    this.turnReset();
-    this.placementAssigner();
+    this.turnCounter();
     this.turnAlternator();
-    if((this.state.currentVertical > this.state.island1[0]
-        && this.state.currentVertical < this.state.island1[2]
-        && this.state.currentHorizontal < this.state.island1[1]
-        && this.state.currentHorizontal > this.state.island1[3])
-        ||
-        (this.state.currentVertical > this.state.island2[0]
-        && this.state.currentVertical < this.state.island2[2]
-        && this.state.currentHorizontal < this.state.island2[1]
-        && this.state.currentHorizontal > this.state.island2[3]))
-    {
-      this.winPageNav();
-    } else if(this.state.currentVertical < 134){
+    this.winPageNav();
+    if (this.state.playerTurn == 1) {
+      if (vertical < 134) {
       this.setState({
-        currentVertical: this.state.currentVertical + this.state.playerMove
+        verticalMove1: vertical + this.state.playerMove
       });
-    } else {
-      this.setState({
-        currentVertical: -624
+      } else {
+        this.setState({
+          verticalMove1: -624
+        });
+      }
+    } else if(this.state.playerTurn == 2) {
+      if(vertical < 134){
+        this.setState({
+          verticalMove2: vertical + this.state.playerMove
       });
+      } else{
+        this.setState({
+          verticalMove2: -624
+        });
+      }
     }
-    this.placementAssigner();
   }
 
   leftPress = () => {
-    this.turnReset();
-    this.placementAssigner();
+    this.turnCounter();
     this.turnAlternator();
-    if((this.state.currentVertical > this.state.island1[0]
-        && this.state.currentVertical < this.state.island1[2]
-        && this.state.currentHorizontal < this.state.island1[1]
-        && this.state.currentHorizontal > this.state.island1[3])
-        ||
-        (this.state.currentVertical > this.state.island2[0]
-        && this.state.currentVertical < this.state.island2[2]
-        && this.state.currentHorizontal < this.state.island2[1]
-        && this.state.currentHorizontal > this.state.island2[3]))
-    {
-      this.winPageNav();
-    } else if(this.state.currentHorizontal >  -24){
+    this.winPageNav();
+    if (this.state.playerTurn == 1) {
+      if (horizontal > -24) {
       this.setState({
-        currentHorizontal: this.state.currentHorizontal - this.state.playerMove
+        horizontalMove1: horizontal - this.state.playerMove
       });
     } else {
       this.setState({
-        currentHorizontal: 336
+        horizontalMove1: 336
       });
     }
-    this.placementAssigner();
+  } else if(this.state.playerTurn == 2) {
+    if(horizontal > -24){
+      this.setState({
+        horizontalMove2: horizontal - this.state.playerMove
+      });
+    } else{
+      this.setState({
+        horizontalMove2: 336
+      });
+    }
   }
+}
 
-  rightPress = () => {
-    this.turnReset();
-    this.placementAssigner();
-    this.turnAlternator();
-    if((this.state.currentVertical > this.state.island1[0]
-        && this.state.currentVertical < this.state.island1[2]
-        && this.state.currentHorizontal < this.state.island1[1]
-        && this.state.currentHorizontal > this.state.island1[3])
-        ||
-        (this.state.currentVertical > this.state.island2[0]
-        && this.state.currentVertical < this.state.island2[2]
-        && this.state.currentHorizontal < this.state.island2[1]
-        && this.state.currentHorizontal > this.state.island2[3]))
-    {
+    rightPress = () => {
+      this.turnCounter();
+      this.turnAlternator();
       this.winPageNav();
-    } else if(this.state.currentHorizontal <  336){
-      this.setState({
-        currentHorizontal: this.state.currentHorizontal + this.state.playerMove
-      });
-    } else {
-      this.setState({
-        currentHorizontal: -24
-      });
+      if (this.state.playerTurn == 1) {
+        if (horizontal < 336) {
+        this.setState({
+          horizontalMove1: horizontal + this.state.playerMove
+        });
+      } else {
+        this.setState({
+          horizontalMove1: -24
+        });
+      }
+    } else if(this.state.playerTurn == 2) {
+      if(horizontal < 336){
+        this.setState({
+          horizontalMove2: horizontal + this.state.playerMove
+        });
+      } else{
+        this.setState({
+          horizontalMove2: -24
+        });
+      }
     }
-    this.placementAssigner();
   }
 
   render() {
@@ -221,8 +213,8 @@ export default class GamePage extends React.Component {
                 />
             </TouchableOpacity>
             <ShipSprite
-              upArrow={this.state.verticalMove}
-              leftArrow={this.state.horizontalMove}
+              upArrow={this.state.verticalMove1}
+              leftArrow={this.state.horizontalMove1}
             />
             <ShipSprite2
               upArrow2 ={this.state.verticalMove2}

@@ -17,7 +17,7 @@ gamePageNav(e){
   render () {
     return (
       <View style={landingPageStyle.container}>
-        <Text style={landingPageStyle.superTitle}>TEXT FROM LANDING Pirate</Text>
+        <Text style={landingPageStyle.superTitle}>Anchors and Acorns</Text>
         <Image source={require('./Assets/Images/ShipRight.png')}
           resizeMode= 'contain'
           style={landingPageStyle.landingImage}
