@@ -13,33 +13,75 @@ export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      verticalMove1: 0,
+      verticalMove1: 48,
       horizontalMove1: 0,
-      verticalMove2: 0,
-      horizontalMove2: 0,
-      currentHorizontal: 0,
-      currentVertical: 0,
+      verticalMove2: -48,
+      horizontalMove2: 288,
       playerTurn: 1,
       moveCount: 0,
       playerMove: 48,
-      island1: [-502, 90, -453, 21],
-      island2: [-4, 258, 65, 189],
+      island1: [-436, 228, -389, 159],
+      whirlpool1: [-292, 156, -245, 81],
     }
   }
 
-  winPageNav(){
-    if((vertical > this.state.island1[0]
-        && vertical < this.state.island1[2]
-        && horizontal < this.state.island1[1]
-        && horizontal > this.state.island1[3])
-        ||
-        (vertical > this.state.island2[0]
-        && vertical < this.state.island2[2]
-        && horizontal < this.state.island2[1]
-        && horizontal > this.state.island2[3])){
-          this.props.navigation.navigate('EndingPage');
-        }
+  componentDidUpdate(){
   }
+  whirlPoolNav(){
+      if(this.state.playerTurn == 1) {
+        if(vertical > this.state.whirlpool1[0]
+          && vertical < this.state.whirlpool1[2]
+          && horizontal < this.state.whirlpool1[1]
+          && horizontal > this.state.whirlpool1[3])
+        {
+          this.setState({
+            playerTurn: 2,
+            turnCounter: 0
+          });
+          Alert.alert(
+            "YARR",
+            "Yee hit a whirlpool!",
+            {cancelable: false}
+          )
+        }
+      } else if(this.state.playerTurn == 2) {
+        if(vertical > (this.state.whirlpool1[0] - 100)
+          && vertical < (this.state.whirlpool1[2] - 100)
+          && horizontal < this.state.whirlpool1[1]
+          && horizontal > this.state.whirlpool1[3])
+        {
+          this.setState({
+            playerTurn: 1,
+            turnCounter: 0
+          });
+          Alert.alert(
+            "YARR",
+            "Yee hit a whirlpool!",
+            {cancelable: false}
+          )
+        }
+    }
+}
+
+  winPageNav(){
+      if(this.state.playerTurn == 1) {
+        if(vertical > this.state.island1[0]
+          && vertical < this.state.island1[2]
+          && horizontal < this.state.island1[1]
+          && horizontal > this.state.island1[3])
+        {
+        this.props.navigation.navigate('EndingPage');
+        }
+      } else if(this.state.playerTurn == 2) {
+        if(vertical > (this.state.island1[0] - 100)
+          && vertical < (this.state.island1[2] - 100)
+          && horizontal < this.state.island1[1]
+          && horizontal > this.state.island1[3])
+        {
+        this.props.navigation.navigate('EndingPage2');
+        }
+    }
+}
 
   turnAlternator = () => {
     if (this.state.playerTurn == 1) {
@@ -69,7 +111,6 @@ export default class GamePage extends React.Component {
   upPress = () => {
     this.turnCounter();
     this.turnAlternator();
-    this.winPageNav();
     if (this.state.playerTurn == 1) {
       if (vertical > -576) {
       this.setState({
@@ -77,26 +118,28 @@ export default class GamePage extends React.Component {
       });
     } else {
       this.setState({
-        verticalMove1: 96
+        verticalMove1: 134
       });
     }
     } else if(this.state.playerTurn == 2) {
-      if(vertical > -576){
+      if(vertical > -626){
         this.setState({
           verticalMove2: vertical - this.state.playerMove
         });
+        console.log(this.state.verticalMove2)
       } else{
         this.setState({
-          verticalMove2: 96
+          verticalMove2: 34
         });
       }
     }
+     this.winPageNav();
+     this.whirlPoolNav();
   }
 
   downPress = () => {
     this.turnCounter();
     this.turnAlternator();
-    this.winPageNav();
     if (this.state.playerTurn == 1) {
       if (vertical < 134) {
       this.setState({
@@ -104,26 +147,27 @@ export default class GamePage extends React.Component {
       });
       } else {
         this.setState({
-          verticalMove1: -624
+          verticalMove1: -576
         });
       }
     } else if(this.state.playerTurn == 2) {
-      if(vertical < 134){
+      if(vertical < 34){
         this.setState({
           verticalMove2: vertical + this.state.playerMove
       });
       } else{
         this.setState({
-          verticalMove2: -624
+          verticalMove2: -676
         });
       }
     }
+     this.winPageNav();
+     this.whirlPoolNav();
   }
 
   leftPress = () => {
     this.turnCounter();
     this.turnAlternator();
-    this.winPageNav();
     if (this.state.playerTurn == 1) {
       if (horizontal > -24) {
       this.setState({
@@ -145,12 +189,13 @@ export default class GamePage extends React.Component {
       });
     }
   }
+   this.whirlPoolNav();
+   this.winPageNav();
 }
 
     rightPress = () => {
       this.turnCounter();
       this.turnAlternator();
-      this.winPageNav();
       if (this.state.playerTurn == 1) {
         if (horizontal < 336) {
         this.setState({
@@ -172,6 +217,15 @@ export default class GamePage extends React.Component {
         });
       }
     }
+     this.winPageNav();
+     this.whirlPoolNav();
+  }
+  arrowColor = () =>{
+    if(this.state.playerTurn == 1){
+      return require("./Assets/Images/ArrowRed.png")
+    } else if(this.state.playerTurn == 2) {
+      return require("./Assets/Images/ArrowGreen.png")
+    }
   }
 
   render() {
@@ -181,34 +235,34 @@ export default class GamePage extends React.Component {
           <World>
             <WaterTileMap />
             <TouchableOpacity
-              style={{top: 175, left: 182, zIndex: 10, width: 50, height:50}}
+              style={{top: 275, left: 182, zIndex: 10, width: 50, height:50}}
               onPress= {this.upPress}>
                 <Image
-                  source={require("./Assets/Images/Arrow.png")}
+                  source={this.arrowColor()}
                   style={{width: 50, height: 50}}
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 200, left: 182, zIndex: 10, width: 50, height:50}}
+              style={{top: 300, left: 182, zIndex: 10, width: 50, height:50}}
               onPress= {this.downPress}>
                 <Image
-                  source={require("./Assets/Images/Arrow.png")}
+                  source={this.arrowColor()}
                   style={{width: 50, height: 50, transform: [{rotate: "180deg"}]}}
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 112, left: 230, zIndex: 10, width: 50, height:50}}
+              style={{top: 212, left: 230, zIndex: 10, width: 50, height:50}}
               onPress= {this.rightPress}>
                 <Image
-                  source={require("./Assets/Images/Arrow.png")}
+                  source={this.arrowColor()}
                   style={{width: 50, height: 50, transform: [{rotate: "90deg"}]}}
                 />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 62, left: 135, zIndex: 10, width: 50, height:50}}
+              style={{top: 162, left: 135, zIndex: 10, width: 50, height:50}}
               onPress= {this.leftPress}>
                 <Image
-                  source={require("./Assets/Images/Arrow.png")}
+                  source={this.arrowColor()}
                   style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
                 />
             </TouchableOpacity>

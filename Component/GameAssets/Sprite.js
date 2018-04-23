@@ -28,7 +28,7 @@ export default class ShipSprite extends Component {
     return (
       <View>
         <Sprite
-          style = {{top: upDown, left: leftRight}}
+          style = {{zIndex: 9, top: upDown, left: leftRight}}
           repeat={false}
           src={require('../Assets/Images/Sprites/BigBoatRO.png')}
           scale={.5}

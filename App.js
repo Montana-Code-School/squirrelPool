@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import GamePage from './Component/GamePage.js';
 import LandingPage from './Component/LandingPage.js';
 import EndingPage from './Component/EndingPage.js';
+import EndingPage2 from './Component/EndingPage2.js';
 import { StackNavigator } from 'react-navigation';
 
 const RootStack =
@@ -19,6 +20,10 @@ const RootStack =
     EndingPage: {
       screen: EndingPage,
       name: 'End Page',
+    },
+    EndingPage2: {
+      screen: EndingPage2,
+      name: 'End Page 2',
     }
   },
   {initialRouteName: 'GamePage',
