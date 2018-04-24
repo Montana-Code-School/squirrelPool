@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import { TileMap, Loop, Stage, World } from 'react-game-kit/native';
 import WaterTileMap from './GameAssets/WaterTileMap.js'
 import ShipSprite from './GameAssets/Sprite.js';
+import { Audio } from 'expo';
 
 export default class GamePage extends React.Component {
   constructor(props) {
@@ -41,6 +42,19 @@ export default class GamePage extends React.Component {
         verticalMove: 96
       });
     }
+  }
+
+  playSound = async () => {
+    const soundObject = new Audio.Sound();
+      try {
+        await soundObject.loadAsync(require('./Assets/song.mp3'));
+        this.audioPlayer1  = soundObject;
+        this.audioPlayer1.playAsync();
+        this.audioPlayer1.setPositionAsync(0);
+        this.audioPlayer1.setRateAsync(3, false);
+      } catch (error) {
+        console.error(error)
+      }
   }
 
   downPress = () => {
@@ -102,6 +116,10 @@ export default class GamePage extends React.Component {
     console.log("left: ", this.state.horizontalMove);
     console.log("bottom: ", this.state.verticalMove + 69);
     console.log("right: ", this.state.horizontalMove + 69);
+  }
+
+  componentDidMount() {
+    this.playSound();
   }
 
   render() {
