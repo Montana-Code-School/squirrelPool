@@ -8,22 +8,35 @@ export default class InstructionPage extends React.Component {
 
 constructor(props) {
   super(props);
+  this.state = {
+    press: 0,
+  }
 }
 
 gamePageNav(e){
-  this.props.navigation.navigate('GamePage');
+  this.setState({
+    press: this.state.press + 1,
+  });
+  if (this.state.press == 0) {
+    this.props.navigation.navigate('GamePage');
+  }
 }
 
   render () {
     return (
       <View style={landingPageStyle.container}>
-        <TouchableWithoutFeedback onPress={(e) => this.gamePageNav(e)}>
+
           <Text style={{width: '60%', fontSize: 25}}>
             How t' Play:
             {"\n"}{"\n"}{"\n"}
             Players alternate turns movin' thar color o' galleon across th' map usin'
             th' arrow buttons. Th' whirlpools will cause ye t' lose a turn. Th' first
             player t' leave th' island wit' th' loot be th' winner!
+            {"\n"}{"\n"}
+            </Text>
+            <TouchableWithoutFeedback onPress={(e) => this.gamePageNav(e)}>
+          <Text>
+            Tap here to play
           </Text>
         </TouchableWithoutFeedback>
       </View>

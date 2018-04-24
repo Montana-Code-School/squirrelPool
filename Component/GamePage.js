@@ -7,7 +7,7 @@ import { AudioPlayer } from 'react-game-kit';
 import WaterTileMap from './GameAssets/WaterTileMap.js';
 import ShipSprite from './GameAssets/Sprite.js';
 import ShipSprite2 from './GameAssets/Sprite2.js';
-import Expo from 'expo';
+import { Audio } from 'expo';
 
 
 let vertical;
@@ -27,16 +27,28 @@ export default class GamePage extends React.Component {
       whirlpool1: [-502, 90, -453, 21], //top left
       whirlpool2: [-292, 156, -245, 81],//middle
       whirlpool3: [-196, 325, -149, 250], //bottom right
+      soundObject: new Audio.Sound(),
     }
   }
 
-  async componentDidMount(){
-    await soundObject.loadAsync(require(‘./Assets/Audio/PIRATESONG.mp3’));
- await soundObject.playAsync();
+  componentDidMount(){
+    this.playSound();
   }
 
 
   componentWillUnmount(){
+  }
+
+  playSound = async () => {
+      try {
+        await this.state.soundObject.loadAsync(require('./Assets/Audio/DrunkenSailor.mp3'));
+        this.state.soundObject.playAsync();
+        this.state.soundObject.setPositionAsync(0);
+        this.state.soundObject.setRateAsync(1, false);
+        this.state.soundObject.setIsLoopingAsync(1)
+      } catch (error) {
+        console.error(error)
+      }
   }
 
   whirlPoolNav(){
@@ -102,6 +114,7 @@ export default class GamePage extends React.Component {
           && horizontal < this.state.island1[1]
           && horizontal > this.state.island1[3])
         {
+        this.state.soundObject.stopAsync();
         this.props.navigation.navigate('EndingPage');
         }
       } else if(this.state.playerTurn == 2) {
@@ -110,6 +123,7 @@ export default class GamePage extends React.Component {
           && horizontal < this.state.island1[1]
           && horizontal > this.state.island1[3])
         {
+        this.state.soundObject.stopAsync();
         this.props.navigation.navigate('EndingPage2');
         }
     }
@@ -141,34 +155,32 @@ export default class GamePage extends React.Component {
   }
 
    upPress = () => {
-    // this.turnCounter();
-    // this.turnAlternator();
-    // if (this.state.playerTurn == 1) {
-    //   if (vertical > -576) {
-    //   this.setState({
-    //     verticalMove1: vertical - this.state.playerMove
-    //   });
-    // } else {
-    //   this.setState({
-    //     verticalMove1: 134
-    //   });
-    // }
-    // } else if(this.state.playerTurn == 2) {
-    //   if(vertical > -626){
-    //     this.setState({
-    //       verticalMove2: vertical - this.state.playerMove
-    //     });
-    //     console.log(this.state.verticalMove2)
-    //   } else{
-    //     this.setState({
-    //       verticalMove2: 34
-    //     });
-    //   }
-    // }
-    //  this.winPageNav();
-    //  this.whirlPoolNav();
-    // soundObject.loadAsync(require('./Assets/Audio/PIRATESONG.mp3'));
-    // soundObject.playAsync();
+    this.turnCounter();
+    this.turnAlternator();
+    if (this.state.playerTurn == 1) {
+      if (vertical > -576) {
+      this.setState({
+        verticalMove1: vertical - this.state.playerMove
+      });
+    } else {
+      this.setState({
+        verticalMove1: 134
+      });
+    }
+    } else if(this.state.playerTurn == 2) {
+      if(vertical > -626){
+        this.setState({
+          verticalMove2: vertical - this.state.playerMove
+        });
+        console.log(this.state.verticalMove2)
+      } else{
+        this.setState({
+          verticalMove2: 34
+        });
+      }
+    }
+     this.winPageNav();
+     this.whirlPoolNav();
   }
 
   downPress = () => {
