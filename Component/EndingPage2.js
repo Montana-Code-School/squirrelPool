@@ -6,25 +6,25 @@ import { Font } from 'expo';
 
 export default class EndingPage2 extends React.Component {
 
-constructor(props) {
-  super(props);
-  this.state = {
-    fontLoaded: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontLoaded: false
+    }
   }
-}
 
-async componentDidMount() {
-  await Font.loadAsync({
-    'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
-  });
-  this.setState({
-    fontLoaded: true
-  });
-}
+  async componentDidMount() {
+    await Font.loadAsync({
+      'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
+    });
+    this.setState({
+      fontLoaded: true
+    });
+  }
 
-landPageNav(e){
-  this.props.navigation.navigate('LandingPage');
-}
+  landPageNav(e){
+    this.props.navigation.navigate('LandingPage');
+  }
 
   render () {
     return (
@@ -32,17 +32,17 @@ landPageNav(e){
       {
         this.state.fontLoaded ? (
           <Text style={endingPage2Style.win}>
-          Arrr! Captn' Redtail Wins!
+            Arrr! Captn' Redtail Wins!
           </Text>
         ) : null
       }
         <TouchableHighlight
           onPress={(e) => this.landPageNav(e)}
           style={endingPage2Style.touch}>
-        <Image
-          source={require("./Assets/Images/SQUIRRELWIN2.png")}
-          style={endingPage2Style.image}
-        />
+          <Image
+            source={require("./Assets/Images/SQUIRRELWIN2.png")}
+            style={endingPage2Style.image}
+          />
         </TouchableHighlight>
       </View>
     );

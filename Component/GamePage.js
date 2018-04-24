@@ -9,9 +9,9 @@ import ShipSprite from './GameAssets/Sprite.js';
 import ShipSprite2 from './GameAssets/Sprite2.js';
 import { Audio } from 'expo';
 
-
 let vertical;
 let horizontal;
+
 export default class GamePage extends React.Component {
   constructor(props) {
     super(props);
@@ -36,98 +36,95 @@ export default class GamePage extends React.Component {
   }
 
 
-  componentWillUnmount(){
-  }
-
   playSound = async () => {
-      try {
-        await this.state.soundObject.loadAsync(require('./Assets/Audio/DrunkenSailor.mp3'));
-        this.state.soundObject.playAsync();
-        this.state.soundObject.setPositionAsync(0);
-        this.state.soundObject.setRateAsync(1, false);
-        this.state.soundObject.setIsLoopingAsync(1)
-      } catch (error) {
-        console.error(error)
-      }
+    try {
+      await this.state.soundObject.loadAsync(require('./Assets/Audio/DrunkenSailor.mp3'));
+      this.state.soundObject.playAsync();
+      this.state.soundObject.setPositionAsync(0);
+      this.state.soundObject.setRateAsync(1, false);
+      this.state.soundObject.setIsLoopingAsync(1)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   whirlPoolNav(){
-      if(this.state.playerTurn == 1) {
-        if((vertical > this.state.whirlpool1[0]
-          && vertical < this.state.whirlpool1[2]
-          && horizontal < this.state.whirlpool1[1]
-          && horizontal > this.state.whirlpool1[3])
-          ||
-          (vertical > this.state.whirlpool2[0]
-          && vertical < this.state.whirlpool2[2]
-          && horizontal < this.state.whirlpool2[1]
-          && horizontal > this.state.whirlpool2[3])
-          ||
-          (vertical > this.state.whirlpool3[0]
-          && vertical < this.state.whirlpool3[2]
-          && horizontal < this.state.whirlpool3[1]
-          && horizontal > this.state.whirlpool3[3]))
-        {
-          this.setState({
-            playerTurn: 2,
-            turnCounter: 0
-          });
-          Alert.alert(
-            "YARR!",
-            "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
-            {cancelable: false}
-          )
-        }
-      } else if(this.state.playerTurn == 2) {
-        if((vertical > (this.state.whirlpool1[0] - 100)
-        && vertical < (this.state.whirlpool1[2] - 100)
+    if(this.state.playerTurn == 1) {
+      if((vertical > this.state.whirlpool1[0]
+        && vertical < this.state.whirlpool1[2]
         && horizontal < this.state.whirlpool1[1]
         && horizontal > this.state.whirlpool1[3])
         ||
-        (vertical > this.state.whirlpool2[0] - 100
-        && vertical < this.state.whirlpool2[2] -100
+        (vertical > this.state.whirlpool2[0]
+        && vertical < this.state.whirlpool2[2]
         && horizontal < this.state.whirlpool2[1]
         && horizontal > this.state.whirlpool2[3])
         ||
-        (vertical > (this.state.whirlpool3[0] - 100)
-        && vertical < (this.state.whirlpool3[2] - 100)
+        (vertical > this.state.whirlpool3[0]
+        && vertical < this.state.whirlpool3[2]
         && horizontal < this.state.whirlpool3[1]
         && horizontal > this.state.whirlpool3[3]))
-        {
-          this.setState({
-            playerTurn: 1,
-            turnCounter: 0
-          });
-          Alert.alert(
-            "YARR!",
-            "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
-            {cancelable: false}
-          )
-        }
+      {
+        this.setState({
+          playerTurn: 2,
+          turnCounter: 0
+        });
+        Alert.alert(
+          "YARR!",
+          "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
+          {cancelable: false}
+        )
+      }
+    } else if(this.state.playerTurn == 2) {
+      if((vertical > (this.state.whirlpool1[0] - 100)
+      && vertical < (this.state.whirlpool1[2] - 100)
+      && horizontal < this.state.whirlpool1[1]
+      && horizontal > this.state.whirlpool1[3])
+      ||
+      (vertical > this.state.whirlpool2[0] - 100
+      && vertical < this.state.whirlpool2[2] -100
+      && horizontal < this.state.whirlpool2[1]
+      && horizontal > this.state.whirlpool2[3])
+      ||
+      (vertical > (this.state.whirlpool3[0] - 100)
+      && vertical < (this.state.whirlpool3[2] - 100)
+      && horizontal < this.state.whirlpool3[1]
+      && horizontal > this.state.whirlpool3[3]))
+      {
+        this.setState({
+          playerTurn: 1,
+          turnCounter: 0
+        });
+        Alert.alert(
+          "YARR!",
+          "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
+          {cancelable: false}
+        )
+      }
     }
-}
+  }
 
   winPageNav(){
-      if(this.state.playerTurn == 1) {
-        if(vertical > this.state.island1[0]
-          && vertical < this.state.island1[2]
-          && horizontal < this.state.island1[1]
-          && horizontal > this.state.island1[3])
-        {
-        this.state.soundObject.stopAsync();
-        this.props.navigation.navigate('EndingPage');
-        }
-      } else if(this.state.playerTurn == 2) {
-        if(vertical > (this.state.island1[0] - 100)
-          && vertical < (this.state.island1[2] - 100)
-          && horizontal < this.state.island1[1]
-          && horizontal > this.state.island1[3])
-        {
-        this.state.soundObject.stopAsync();
-        this.props.navigation.navigate('EndingPage2');
-        }
+    if(this.state.playerTurn == 1) {
+      if(vertical > this.state.island1[0]
+        && vertical < this.state.island1[2]
+        && horizontal < this.state.island1[1]
+        && horizontal > this.state.island1[3])
+      {
+      this.state.soundObject.stopAsync();
+      this.props.navigation.navigate('EndingPage');
+      }
+    } else if(this.state.playerTurn == 2) {
+      if(vertical > (this.state.island1[0] - 100)
+        && vertical < (this.state.island1[2] - 100)
+        && horizontal < this.state.island1[1]
+        && horizontal > this.state.island1[3])
+      {
+      this.state.soundObject.stopAsync();
+      this.props.navigation.navigate('EndingPage2');
+      }
     }
-}
+  }
 
   turnAlternator = () => {
     if (this.state.playerTurn == 1) {
@@ -154,7 +151,7 @@ export default class GamePage extends React.Component {
     }
   }
 
-   upPress = () => {
+  upPress = () => {
     this.turnCounter();
     this.turnAlternator();
     if (this.state.playerTurn == 1) {
@@ -162,11 +159,11 @@ export default class GamePage extends React.Component {
       this.setState({
         verticalMove1: vertical - this.state.playerMove
       });
-    } else {
-      this.setState({
-        verticalMove1: 134
-      });
-    }
+      } else {
+        this.setState({
+          verticalMove1: 134
+        });
+      }
     } else if(this.state.playerTurn == 2) {
       if(vertical > -626){
         this.setState({
@@ -179,8 +176,8 @@ export default class GamePage extends React.Component {
         });
       }
     }
-     this.winPageNav();
-     this.whirlPoolNav();
+    this.winPageNav();
+    this.whirlPoolNav();
   }
 
   downPress = () => {
@@ -207,8 +204,8 @@ export default class GamePage extends React.Component {
         });
       }
     }
-     this.winPageNav();
-     this.whirlPoolNav();
+    this.winPageNav();
+    this.whirlPoolNav();
   }
 
   leftPress = () => {
@@ -224,29 +221,29 @@ export default class GamePage extends React.Component {
         horizontalMove1: 336
       });
     }
-  } else if(this.state.playerTurn == 2) {
-    if(horizontal > -24){
-      this.setState({
-        horizontalMove2: horizontal - this.state.playerMove
-      });
-    } else{
-      this.setState({
-        horizontalMove2: 336
-      });
-    }
-  }
-   this.whirlPoolNav();
-   this.winPageNav();
-}
-
-    rightPress = () => {
-      this.turnCounter();
-      this.turnAlternator();
-      if (this.state.playerTurn == 1) {
-        if (horizontal < 336) {
+    } else if(this.state.playerTurn == 2) {
+      if(horizontal > -24){
         this.setState({
-          horizontalMove1: horizontal + this.state.playerMove
+          horizontalMove2: horizontal - this.state.playerMove
         });
+      } else{
+        this.setState({
+          horizontalMove2: 336
+        });
+      }
+    }
+    this.winPageNav();
+    this.whirlPoolNav();
+  }
+
+  rightPress = () => {
+    this.turnCounter();
+    this.turnAlternator();
+    if (this.state.playerTurn == 1) {
+      if (horizontal < 336) {
+      this.setState({
+        horizontalMove1: horizontal + this.state.playerMove
+      });
       } else {
         this.setState({
           horizontalMove1: -24
@@ -263,8 +260,8 @@ export default class GamePage extends React.Component {
         });
       }
     }
-     this.winPageNav();
-     this.whirlPoolNav();
+    this.winPageNav();
+    this.whirlPoolNav();
   }
   arrowColor = () =>{
     if(this.state.playerTurn == 1){
@@ -281,45 +278,45 @@ export default class GamePage extends React.Component {
           <World>
             <WaterTileMap />
             <TouchableOpacity
-              style={{top: 275, left: 182, zIndex: 10, width: 50, height:50}}
-              onPress= {this.upPress}>
-                <Image
-                  source={this.arrowColor()}
-                  style={{width: 50, height: 50}}
-                />
+            style={{top: 275, left: 182, zIndex: 10, width: 50, height:50}}
+            onPress= {this.upPress}>
+              <Image
+              source={this.arrowColor()}
+              style={{width: 50, height: 50}}
+              />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 300, left: 182, zIndex: 10, width: 50, height:50}}
-              onPress= {this.downPress}>
-                <Image
-                  source={this.arrowColor()}
-                  style={{width: 50, height: 50, transform: [{rotate: "180deg"}]}}
-                />
+            style={{top: 300, left: 182, zIndex: 10, width: 50, height:50}}
+            onPress= {this.downPress}>
+              <Image
+              source={this.arrowColor()}
+              style={{width: 50, height: 50, transform: [{rotate: "180deg"}]}}
+              />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 212, left: 230, zIndex: 10, width: 50, height:50}}
-              onPress= {this.rightPress}>
-                <Image
-                  source={this.arrowColor()}
-                  style={{width: 50, height: 50, transform: [{rotate: "90deg"}]}}
-                />
+            style={{top: 212, left: 230, zIndex: 10, width: 50, height:50}}
+            onPress= {this.rightPress}>
+              <Image
+              source={this.arrowColor()}
+              style={{width: 50, height: 50, transform: [{rotate: "90deg"}]}}
+              />
             </TouchableOpacity>
             <TouchableOpacity
-              style={{top: 162, left: 135, zIndex: 10, width: 50, height:50}}
-              onPress= {this.leftPress}>
-                <Image
-                  source={this.arrowColor()}
-                  style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
-                />
+            style={{top: 162, left: 135, zIndex: 10, width: 50, height:50}}
+            onPress= {this.leftPress}>
+              <Image
+              source={this.arrowColor()}
+              style={{width: 50, height: 50, transform: [{rotate: "270deg"}]}}
+              />
             </TouchableOpacity>
             <ShipSprite
-              upArrow={this.state.verticalMove1}
-              leftArrow={this.state.horizontalMove1}
+            upArrow={this.state.verticalMove1}
+            leftArrow={this.state.horizontalMove1}
             />
             <ShipSprite2
-              upArrow2 ={this.state.verticalMove2}
-              leftArrow2 ={this.state.horizontalMove2}
-              />
+            upArrow2 ={this.state.verticalMove2}
+            leftArrow2 ={this.state.horizontalMove2}
+            />
           </World>
         </Stage>
       </Loop>
