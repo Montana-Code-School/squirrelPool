@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity, Alert, Image, StyleSheet, Text, View, } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { TileMap, Loop, Stage, World } from 'react-game-kit/native';
-import WaterTileMap from './GameAssets/WaterTileMap.js'
+import { AudioPlayer } from 'react-game-kit';
+import WaterTileMap from './GameAssets/WaterTileMap.js';
 import ShipSprite from './GameAssets/Sprite.js';
 import ShipSprite2 from './GameAssets/Sprite2.js';
+import Expo from 'expo';
+
 
 let vertical;
 let horizontal;
@@ -21,14 +24,21 @@ export default class GamePage extends React.Component {
       moveCount: 0,
       playerMove: 48,
       island1: [-436, 228, -389, 159],
-      whirlpool1: [-292, 156, -245, 81],
-      whirlpool2: [-196, 344, -149, 269],
-      whirlpool3: [-502, 90, -453, 21],
+      whirlpool1: [-502, 90, -453, 21], //top left
+      whirlpool2: [-292, 156, -245, 81],//middle
+      whirlpool3: [-196, 325, -149, 250], //bottom right
     }
   }
 
-  componentDidUpdate(){
+  async componentDidMount(){
+    await soundObject.loadAsync(require(‘./Assets/Audio/PIRATESONG.mp3’));
+ await soundObject.playAsync();
   }
+
+
+  componentWillUnmount(){
+  }
+
   whirlPoolNav(){
       if(this.state.playerTurn == 1) {
         if((vertical > this.state.whirlpool1[0]
@@ -52,7 +62,7 @@ export default class GamePage extends React.Component {
           });
           Alert.alert(
             "YARR!",
-            "Yee hit a whirlpool and lost a turn, Capt'n",
+            "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
             {cancelable: false}
           )
         }
@@ -78,7 +88,7 @@ export default class GamePage extends React.Component {
           });
           Alert.alert(
             "YARR!",
-            "Yee hit a whirlpool and lost a turn, Capt'n",
+            "Yee hit a whirlpool and lost a turn, Squirrely-wag!",
             {cancelable: false}
           )
         }
@@ -130,33 +140,35 @@ export default class GamePage extends React.Component {
     }
   }
 
-  upPress = () => {
-    this.turnCounter();
-    this.turnAlternator();
-    if (this.state.playerTurn == 1) {
-      if (vertical > -576) {
-      this.setState({
-        verticalMove1: vertical - this.state.playerMove
-      });
-    } else {
-      this.setState({
-        verticalMove1: 134
-      });
-    }
-    } else if(this.state.playerTurn == 2) {
-      if(vertical > -626){
-        this.setState({
-          verticalMove2: vertical - this.state.playerMove
-        });
-        console.log(this.state.verticalMove2)
-      } else{
-        this.setState({
-          verticalMove2: 34
-        });
-      }
-    }
-     this.winPageNav();
-     this.whirlPoolNav();
+   upPress = () => {
+    // this.turnCounter();
+    // this.turnAlternator();
+    // if (this.state.playerTurn == 1) {
+    //   if (vertical > -576) {
+    //   this.setState({
+    //     verticalMove1: vertical - this.state.playerMove
+    //   });
+    // } else {
+    //   this.setState({
+    //     verticalMove1: 134
+    //   });
+    // }
+    // } else if(this.state.playerTurn == 2) {
+    //   if(vertical > -626){
+    //     this.setState({
+    //       verticalMove2: vertical - this.state.playerMove
+    //     });
+    //     console.log(this.state.verticalMove2)
+    //   } else{
+    //     this.setState({
+    //       verticalMove2: 34
+    //     });
+    //   }
+    // }
+    //  this.winPageNav();
+    //  this.whirlPoolNav();
+    // soundObject.loadAsync(require('./Assets/Audio/PIRATESONG.mp3'));
+    // soundObject.playAsync();
   }
 
   downPress = () => {

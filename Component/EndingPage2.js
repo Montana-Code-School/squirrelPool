@@ -15,6 +15,7 @@ landPageNav(e){
   render () {
     return (
       <View>
+      <Text>Arrr! Captn' Redtail Wins!</Text>
         <TouchableHighlight
           onPress={(e) => this.landPageNav(e)}>
         <Image
