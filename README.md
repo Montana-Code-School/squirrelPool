@@ -32,10 +32,11 @@ ___
 ___
 ### On the horizon
 Future features we will be looking to implement include:
+* User Auth to save progress and different ships etc.
 * Randomizing player movement based on a "dice roller" feature.
 * A point tracker for longer games or multiple games in a row.
 * Turn tracker to display how many moves a player has left.
-* Choices of ships/captains.
+* Choices of ships/captains, with options to name your ships and/or captains.
 * A button to silence the music.
 * Randomized Maps with more/less hazards and treasure.
 * New modes like Player vs Player and Treasure Hoarding.
