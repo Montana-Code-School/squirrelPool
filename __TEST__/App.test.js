@@ -33,51 +33,51 @@ it("test", ()=> {
   expect(true).toBeTruthy();
 })
 
-// describe('these are our tests. there are many like them, but these ones are ours.', () => {
-//   describe('LandingPage Test, rendered through App', () => {
-//
-//     it('renders without crashing', () => {
-//       expect(rendered).toBeTruthy();
-//     });
-//
-//     it('has four elements; text(landingpirate), image, text(secondtext), touchablehighlight', () => {
-//       expect(
-//         rendered
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children
-//         .length
-//       )
-//       .toBe(4)
-//     })
-//
-//     it('child [0] is text(landingpirate)', () => {
-//       expect(
-//         rendered
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//         .children[0]
-//       )
-//       .toBe('TEXT FROM LANDING Pirate')
-//     })
-//
-//     it('gamePageNav works onPress', () => {
-//       expect(shallowLanding.find('TouchableHighlight').simulate('press'));
-//     })
-//
-//   })
-//
-//   describe('GamePage Test', () => {
-//
-//     it('renders with out crashing', () => {
-//       expect(renderedGame).toBeTruthy();
-//     })
-//   })
-// })
+describe('these are our tests. there are many like them, but these ones are ours.', () => {
+  describe('LandingPage Test, rendered through App', () => {
+
+    it('renders without crashing', () => {
+      expect(rendered).toBeTruthy();
+    });
+
+    it('has four elements; text(landingpirate), image, text(secondtext), touchablehighlight', () => {
+      expect(
+        rendered
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+        .children
+        .length
+      )
+      .toBe(4)
+    })
+
+    it('child [0] is text(landingpirate)', () => {
+      expect(
+        rendered
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+        .children[0]
+      )
+      .toBe('TEXT FROM LANDING Pirate')
+    })
+
+    it('gamePageNav works onPress', () => {
+      expect(shallowLanding.find('TouchableHighlight').simulate('press'));
+    })
+
+  })
+
+  describe('GamePage Test', () => {
+
+    it('renders with out crashing', () => {
+      expect(renderedGame).toBeTruthy();
+    })
+  })
+})

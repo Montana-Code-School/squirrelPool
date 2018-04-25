@@ -1,38 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableHighlight, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import GamePage from './GamePage.js'
+import InstructionPage from './Instruction.js';
+import { Font } from 'expo';
 
 export default class LandingPage extends React.Component {
 
-constructor(props) {
-  super(props);
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      press: 0,
+      fontLoaded: false,
+    }
+  }
 
-gamePageNav(e){
-  this.props.navigation.navigate('GamePage');
-}
+  //async function loads font
+  async componentDidMount() {
+    await Font.loadAsync({
+      'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
+    });
+    this.setState({
+      fontLoaded: true
+    });
+  }
 
+  //naviages to Instruction page
+  gamePageNav(e){
+    this.props.navigation.navigate('InstructionPage');
+  }
+
+  //renders the cover/landing page includes title, image, and clickable 'start' highlight
   render () {
     return (
       <View style={landingPageStyle.container}>
-        <Text style={landingPageStyle.superTitle}>TEXT FROM LANDING Pirate</Text>
-        <Image source={require('./Assets/Images/ShipRight.png')}
-          resizeMode= 'contain'
-          style={landingPageStyle.landingImage}
-         />
-        <Text style={landingPageStyle.landingTitle}>Second Text!</Text>
-        <TouchableHighlight
-          style={landingPageStyle.startButton}
-          onPress={(e) => this.gamePageNav(e)}>
-            <Text>START</Text>
-        </TouchableHighlight>
+        {
+          this.state.fontLoaded ? (
+            <View style={landingPageStyle.container}>
+              <Text style={landingPageStyle.superTitle}>Anchors 'n' Acorns</Text>
+              <Text style={landingPageStyle.subTitle}>A "Nutical" Adventure!</Text>
+              <Image source={require('./Assets/Images/SKULL1.png')}
+              resizeMode= 'contain'
+              style={landingPageStyle.landingImage}
+              />
+              <Text style={landingPageStyle.startTitle}>Start Yer Adventure</Text>
+              <TouchableWithoutFeedback
+              style={landingPageStyle.startButton}
+              onPress={(e) => this.gamePageNav(e)}>
+                <Image source={require('./Assets/Images/FLAG.png')}
+                style={landingPageStyle.startButton}
+                />
+              </TouchableWithoutFeedback>
+            </View>
+          ) : null
+        }
       </View>
     );
   }
 }
 
+//landing page styling
 const landingPageStyle = StyleSheet.create({
   container: {
     backgroundColor: '#a8ecff',
@@ -41,22 +68,40 @@ const landingPageStyle = StyleSheet.create({
     justifyContent: 'space-around',
   },
   startButton: {
-    flex: 0,
-    backgroundColor: '#ff00ff',
-    marginBottom: 100,
+    flex: 1,
+    width: 50,
+    height: 50,
+    marginTop: -50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'contain',
+    fontFamily: 'TradeWinds-Regular'
   },
   superTitle: {
     flex: 1,
     color: '#000',
     marginTop: 100,
-  },
-  landingTitle: {
-    flex: 2,
+    fontSize: 40,
+    fontWeight: 'bold',
+    fontFamily: 'TradeWinds-Regular'
   },
   landingImage: {
     flex: 3,
     width: 400,
+    marginBottom: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+   subTitle: {
+     flex: 1,
+     fontSize: 25,
+     fontStyle: 'italic',
+     fontFamily: 'TradeWinds-Regular'
+},
+  startTitle: {
+    flex: 1,
+    fontSize: 30,
+    fontWeight: 'bold',
+    fontFamily: 'TradeWinds-Regular'
   },
 });

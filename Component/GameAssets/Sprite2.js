@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Matter, { Engine, Events } from 'matter-js';
 import { Sprite, Body, Loop } from 'react-game-kit/native';
 
-export default class ShipSprite extends Component {
+export default class ShipSprite2 extends Component {
 
   constructor(props){
     super(props);
@@ -23,14 +23,14 @@ export default class ShipSprite extends Component {
 
 
   render() {
-    const upDown = this.props.upArrow;
-    const leftRight = this.props.leftArrow;
+    const upDown2 = this.props.upArrow2;
+    const leftRight2 = this.props.leftArrow2;
     return (
       <View>
         <Sprite
-          style = {{zIndex: 9, top: upDown, left: leftRight}}
+          style = {{zIndex: 8, top: upDown2, left: leftRight2}}
           repeat={false}
-          src={require('../Assets/Images/Sprites/BigBoatRO.png')}
+          src={require('../Assets/Images/Sprites/BigBoatGB.png')}
           scale={.5}
           state={0}
           steps={[0]}
