@@ -7,54 +7,59 @@ import { Font } from 'expo';
 
 export default class LandingPage extends React.Component {
 
-constructor(props) {
-  super(props);
-  this.state = {
-    press: 0,
-    fontLoaded: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      press: 0,
+      fontLoaded: false,
+    }
   }
-}
 
-async componentDidMount() {
-  await Font.loadAsync({
-    'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
-  });
-  this.setState({
-    fontLoaded: true
-  });
-}
+  //async function loads font
+  async componentDidMount() {
+    await Font.loadAsync({
+      'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
+    });
+    this.setState({
+      fontLoaded: true
+    });
+  }
 
-gamePageNav(e){
-  this.props.navigation.navigate('InstructionPage');
-}
+  //naviages to Instruction page
+  gamePageNav(e){
+    this.props.navigation.navigate('InstructionPage');
+  }
 
+  //renders the cover/landing page includes title, image, and clickable 'start' highlight
   render () {
     return (
       <View style={landingPageStyle.container}>
-        { this.state.fontLoaded ? (
-        <View style={landingPageStyle.container}>
-          <Text style={landingPageStyle.superTitle}>Anchors 'n' Acorns</Text>
-          <Text style={landingPageStyle.subTitle}>A "Nutical" Adventure!</Text>
-          <Image source={require('./Assets/Images/SKULL1.png')}
-            resizeMode= 'contain'
-            style={landingPageStyle.landingImage}
-           />
-          <Text style={landingPageStyle.startTitle}>Start Yer Adventure</Text>
-          <TouchableWithoutFeedback
-          style={landingPageStyle.startButton}
-            onPress={(e) => this.gamePageNav(e)}>
-              <Image source={require('./Assets/Images/FLAG.png')}
+        {
+          this.state.fontLoaded ? (
+            <View style={landingPageStyle.container}>
+              <Text style={landingPageStyle.superTitle}>Anchors 'n' Acorns</Text>
+              <Text style={landingPageStyle.subTitle}>A "Nutical" Adventure!</Text>
+              <Image source={require('./Assets/Images/SKULL1.png')}
+              resizeMode= 'contain'
+              style={landingPageStyle.landingImage}
+              />
+              <Text style={landingPageStyle.startTitle}>Start Yer Adventure</Text>
+              <TouchableWithoutFeedback
               style={landingPageStyle.startButton}
-           />
-          </TouchableWithoutFeedback>
-        </View>
-      ) : null
+              onPress={(e) => this.gamePageNav(e)}>
+                <Image source={require('./Assets/Images/FLAG.png')}
+                style={landingPageStyle.startButton}
+                />
+              </TouchableWithoutFeedback>
+            </View>
+          ) : null
         }
       </View>
     );
   }
 }
 
+//landing page styling
 const landingPageStyle = StyleSheet.create({
   container: {
     backgroundColor: '#a8ecff',
