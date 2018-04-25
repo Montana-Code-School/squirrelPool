@@ -12,7 +12,9 @@ export default class EndingPage extends React.Component {
       fontLoaded: false
     }
   }
-  async componentDidMount(){
+
+  // The font loading required for Expo
+  async componentDidMount() {
     await Font.loadAsync({
       'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
     });
@@ -20,10 +22,13 @@ export default class EndingPage extends React.Component {
       fontLoaded: true
     });
   }
+
+  // Navigation back to the landing page
   landPageNav(e){
     this.props.navigation.navigate('LandingPage');
   }
 
+  // Displays winning page for player 1
   render () {
     return (
       <View style={endingPageStyle.main}>
@@ -35,11 +40,11 @@ export default class EndingPage extends React.Component {
           ) : null
         }
         <TouchableHighlight
-          onPress={(e) => this.landPageNav(e)}
-          style={endingPageStyle.touch}>
+        onPress={(e) => this.landPageNav(e)}
+        style={endingPageStyle.touch}>
           <Image
-            source={require("./Assets/Images/SQUIRRELWIN1.png")}
-            style={endingPageStyle.image}
+          source={require("./Assets/Images/SQUIRRELWIN1.png")}
+          style={endingPageStyle.image}
           />
         </TouchableHighlight>
       </View>

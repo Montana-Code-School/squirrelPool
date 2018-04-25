@@ -13,6 +13,7 @@ export default class EndingPage2 extends React.Component {
     }
   }
 
+  // The font loading required for Expo
   async componentDidMount() {
     await Font.loadAsync({
       'TradeWinds-Regular': require('./Assets/TradeWinds-Regular.ttf')
@@ -22,32 +23,35 @@ export default class EndingPage2 extends React.Component {
     });
   }
 
+  // Navigation back to the landing page
   landPageNav(e){
     this.props.navigation.navigate('LandingPage');
   }
 
+  // Displays winning page for player 2
   render () {
     return (
       <View style={endingPage2Style.main}>
-      {
-        this.state.fontLoaded ? (
-          <Text style={endingPage2Style.win}>
-            Arrr! Captn' Redtail Wins!
-          </Text>
-        ) : null
-      }
+        {
+          this.state.fontLoaded ? (
+            <Text style={endingPage2Style.win}>
+              Arrr! Captn' Redtail Wins!
+            </Text>
+          ) : null
+        }
         <TouchableHighlight
-          onPress={(e) => this.landPageNav(e)}
-          style={endingPage2Style.touch}>
+        onPress={(e) => this.landPageNav(e)}
+        style={endingPage2Style.touch}>
           <Image
-            source={require("./Assets/Images/SQUIRRELWIN2.png")}
-            style={endingPage2Style.image}
+          source={require("./Assets/Images/SQUIRRELWIN2.png")}
+          style={endingPage2Style.image}
           />
         </TouchableHighlight>
       </View>
     );
   }
 }
+
 const endingPage2Style = StyleSheet.create({
   main: {
     flex: 1,
