@@ -48,10 +48,10 @@ export default class GamePage extends React.Component {
   // plays audio file on game start
   playSound = async () => {
     try {
-      await this.state.soundObject.loadAsync(require('./Assets/Audio/DKM.mp3'));
+      await this.state.soundObject.loadAsync(require('./Assets/Audio/DrunkenSailor.mp3'));
       this.state.soundObject.playAsync();
       this.state.soundObject.setPositionAsync(0);
-      this.state.soundObject.setRateAsync(1.3, false);
+      this.state.soundObject.setRateAsync(1, false);
       this.state.soundObject.setIsLoopingAsync(1)
     } catch (error) {
       console.error(error)
