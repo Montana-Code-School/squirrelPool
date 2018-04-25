@@ -186,7 +186,6 @@ export default class GamePage extends React.Component {
         this.setState({
           verticalMove2: vertical - this.state.playerMove
         });
-        console.log(this.state.verticalMove2)
       } else {
         this.setState({
           verticalMove2: 34
